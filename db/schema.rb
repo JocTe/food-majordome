@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_145341) do
+ActiveRecord::Schema.define(version: 2021_03_09_153713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_145341) do
   create_table "recipes", force: :cascade do |t|
     t.integer "servings"
     t.float "prep_time"
-    t.bigint "review_id", null: false
     t.bigint "user_id", null: false
     t.float "score"
     t.float "health_score"
@@ -83,7 +82,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_145341) do
     t.string "author"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["review_id"], name: "index_recipes_on_review_id"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -94,6 +92,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_145341) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -126,6 +126,9 @@ ActiveRecord::Schema.define(version: 2021_03_09_145341) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "diet"
+    t.integer "number_of_people"
+    t.string "budget"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -137,8 +140,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_145341) do
   add_foreign_key "proportions", "recipes"
   add_foreign_key "recipe_preferences", "recipes"
   add_foreign_key "recipe_preferences", "users"
-  add_foreign_key "recipes", "reviews"
   add_foreign_key "recipes", "users"
+  add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
   add_foreign_key "steps", "recipes"
   add_foreign_key "user_ingredients", "ingredients"
