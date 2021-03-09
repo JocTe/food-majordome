@@ -11,24 +11,115 @@
   width: 40px;
 }
 
-.nav-bottom {
-  position: fixed;
-  display: flex;
-  justify-content: space-around;
-  background-color: green;
-  border-radius: 60px;
-  margin: auto;
-  width: 345px;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  padding: 10px 30px;
-  font-size: 26px;
-  .nav-item {
-    text-decoration: none;
-    color: white;
-  }
-}
+// .nav-bottom {
+//   position: fixed;
+//   display: flex;
+//   justify-content: space-around;
+//   background-color: $primary;
+//   border-radius: 60px;
+//   margin: auto;
+//   width: 345px;
+//   bottom: 20px;
+//   left: 0;
+//   right: 0;
+//   padding: 10px 30px;
+//   font-size: 26px;
+//   .nav-item {
+//     text-decoration: none;
+//     color: $body-bg;
+//   }
+// }
+
 body {
   height: 200vh;
+}
+
+
+.navigation {
+  position: fixed;
+  width: 345px;
+  padding: 10px 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: $primary;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  bottom: 20px;
+  &-list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-item{
+    perspective: 100px;
+  }
+
+  &-link {
+    font-size: 26px;
+    text-decoration: none;
+    color: $body-bg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 20px 30px;
+    overflow: hidden;
+    position: relative;
+		outline: none;
+
+    &::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			border-radius: 15px;
+			background-color: $body-bg;
+			position: absolute;
+			transform: translateY(60px) scale(.4);
+			transition: all .35s cubic-bezier(0, 0.51, 0, 0.99);
+			opacity: 0;
+		}
+
+    &:hover {
+      color: $body-bg;
+      text-decoration: none;
+    }
+  }
+
+  &-icon {
+    transition: all .35s ease;
+    will-change: opacity, transform, background-color;
+  }
+
+  &-text {
+    position: absolute;
+		transform: translateY(60px) skewY(-20deg);
+    transform-origin: left bottom;
+    font-weight: bold;
+    opacity: 0;
+    transition: all .35s ease;
+    will-change: opacity, transform, background-color;
+  }
+  &-link.active &-icon {
+		transform: translateY(-60px) rotateX(90deg) scale(.4) skewY(-30deg);
+		opacity: 0;
+	}
+	
+	&-link.active &-text {
+		opacity: 1;
+		transform: translateY(-3px) skewY(0deg);
+	}
+	
+	&-link.active::before {
+		transform: translateY(12px) scale(1);
+			transition: all .35s cubic-bezier(0, 0.51, 0, 0.99) 0.2s;
+		opacity: 1;
+	}
+
 }
