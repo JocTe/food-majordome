@@ -11,34 +11,10 @@
   width: 40px;
 }
 
-// .nav-bottom {
-//   position: fixed;
-//   display: flex;
-//   justify-content: space-around;
-//   background-color: $primary;
-//   border-radius: 60px;
-//   margin: auto;
-//   width: 345px;
-//   bottom: 20px;
-//   left: 0;
-//   right: 0;
-//   padding: 10px 30px;
-//   font-size: 26px;
-//   .nav-item {
-//     text-decoration: none;
-//     color: $body-bg;
-//   }
-// }
-
-body {
-  height: 200vh;
-}
-
-
 .navigation {
   position: fixed;
-  width: 345px;
-  padding: 10px 30px;
+  width: 90%;
+  padding: 5px 30px;
   left: 0;
   right: 0;
   margin: auto;
@@ -46,6 +22,7 @@ body {
   border-radius: 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   bottom: 20px;
+
   &-list {
     list-style: none;
     width: 100%;
@@ -61,7 +38,7 @@ body {
   }
 
   &-link {
-    font-size: 26px;
+    font-size: 22px;
     text-decoration: none;
     color: $body-bg;
     display: flex;
@@ -121,5 +98,14 @@ body {
 			transition: all .35s cubic-bezier(0, 0.51, 0, 0.99) 0.2s;
 		opacity: 1;
 	}
+}
 
+.scrolled-down {
+  transform: translateY(200%);
+  transition: all .3s ease-in-out;
+}
+
+.scrolled-up {
+  transform: translateY(0);
+  transition: all .3s ease-in-out;
 }

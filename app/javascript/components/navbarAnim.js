@@ -1,6 +1,6 @@
 
 const initNavbarOnSelection = () => {
-    const links = document.querySelectorAll('.navigation-link')
+    const links = document.querySelectorAll('.navigation-link');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -14,6 +14,33 @@ const initNavbarOnSelection = () => {
             }
         })
     })
+
+
 }
 
-export { initNavbarOnSelection };
+const initNavbarOnScroll = () => {
+    const navbar = document.querySelector('.navigation');
+
+    if (navbar) {
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (currentScroll <= lastScroll) {
+                lastScroll = currentScroll;
+                navbar.classList.remove('scrolled-down');
+                navbar.classList.add('scrolled-up');
+            }
+            else {
+                lastScroll = currentScroll;
+                navbar.classList.add('scrolled-down');
+                navbar.classList.remove('scrolled-up');
+            }
+        });
+    }
+
+    // TO DO : show the navbar afer sometime when iddle
+}
+
+export { initNavbarOnSelection, initNavbarOnScroll };
