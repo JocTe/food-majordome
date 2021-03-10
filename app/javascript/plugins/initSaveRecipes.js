@@ -32,7 +32,10 @@ const initSaveRecipes = () => {
     };
 
     const button = document.querySelector(".save-btn-recipes");
-    button.addEventListener('click', save);
+
+    if (button) {
+        button.addEventListener('click', save);
+    }
 };
 
 export { initSaveRecipes };
