@@ -1,5 +1,6 @@
 import { fetchWithToken } from "../utils/fetch_with_token";
 
+const selectElement = document.querySelector('.number_people');
 const url = "/preferences";
 
 const fetchNumberOfPerson = (event) => {  
@@ -26,8 +27,7 @@ const fetchNumberOfPerson = (event) => {
 };
 
 const addNumberOfPeople = () => {
-  const field = document.getElementById('number_people');
-  field.addEventListener('input', fetchNumberOfPerson);
+  selectElement.addEventListener('change', fetchNumberOfPerson);
 };
 
 export { addNumberOfPeople }
