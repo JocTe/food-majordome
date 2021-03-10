@@ -1,28 +1,20 @@
-.footer {
+.site-footer {
   background-size: cover;
   // background-position: center;
-  height: 14vh;
+  height: 8vh;
   width: 100%;
   position: fixed;
   bottom: 0;
   background-color: $my-green;
+  border-top-right-radius: 27%;
+  border-top-left-radius: 27%;
 
 
-  h3 {
+  p {
     position: absolute;
-    top: 60%;
+    bottom: 2;
     left: 10%;
-    font-size: 2em;
+    font-size: 1em;
     color: $my-white;
   }
-}
-
-.top {
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  bottom: 30%;
-  clip-path: ellipse(50% 6% at 50% 16%);
-  background-color: $my-green;
 }
