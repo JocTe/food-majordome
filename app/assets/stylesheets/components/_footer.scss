@@ -3,18 +3,9 @@
   // background-position: center;
   height: 8vh;
   width: 100%;
-  position: fixed;
   bottom: 0;
   background-color: $my-green;
   border-top-right-radius: 27%;
   border-top-left-radius: 27%;
-
-
-  p {
-    position: absolute;
-    bottom: 2;
-    left: 10%;
-    font-size: 1em;
-    color: $my-white;
-  }
+  margin-top: 2em;
 }
