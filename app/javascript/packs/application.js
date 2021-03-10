@@ -26,12 +26,14 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim'
+import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim';
+import { addDiet } from './add_diet';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initNavbarOnSelection();
   initNavbarOnScroll();
+  addDiet();
   // initSelect2();
 });
