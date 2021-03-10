@@ -1,0 +1,39 @@
+.searchbar-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    
+}
+.searchbar {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    background-color: white;
+    padding: 10px;
+
+    &-input{
+        width: 100%;
+        outline: 0;
+        border: 0;
+        background: none;
+        margin-top: 5px;
+    
+    }
+    &-icon {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: $secondary;
+        
+        &:hover {
+            text-decoration: none;
+            color: white;
+            background-color: darken($secondary, 5%);
+        }
+    }
+}
+
+
