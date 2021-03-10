@@ -2,6 +2,7 @@ import { fetchWithToken } from "../utils/fetch_with_token";
 
 
 const initSaveRecipes = () => {
+
     const save = (event) => {
         event.preventDefault();
         const recipes = document.querySelectorAll(".recipe-params");

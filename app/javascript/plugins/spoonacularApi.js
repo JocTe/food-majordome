@@ -5,7 +5,7 @@ const fetchMenuRecipes = () => {
     const results = document.getElementById("recipes");
 
     if (results) {
-        fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1`)
+        fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=5`) // Make a complex search based on preferences
             .then(response => response.json())
             .then((data) => {
 
@@ -22,7 +22,6 @@ const fetchMenuRecipes = () => {
 
                     results.insertAdjacentHTML('beforeend', recipeTag);
                     const recipe = document.querySelector(".recipe-params");
-                    console.log(recipe);
                 });
             });
 
