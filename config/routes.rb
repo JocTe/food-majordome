@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :menus, only: [:new, :show, :create]
 
-  resources :recipes, only: [:show] do
+  resources :recipes, only: [:show, :create] do
     member do
       get "/instructions", to: "recipes#instructions"
     end
