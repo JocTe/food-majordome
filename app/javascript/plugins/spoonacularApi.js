@@ -4,9 +4,8 @@ const apiKey = process.env.SPOONACULAR_KEY;
 
 const fetchMenuRecipes = () => {
     const results = document.getElementById("recipes");
-    const userid = document.getElementById("user");
+
     if (results) {
-        console.log(userid.dataset.user);
         fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1`)
             .then(response => response.json())
             .then((data) => {
@@ -22,7 +21,7 @@ const fetchMenuRecipes = () => {
                     const body = {
                         recipe: {
                             servings: result.servings, prep_time: result.readyInMinutes, score: result.spoonacularScore, health_score: result.healthScore, name: result.title, summary: result.summary,
-                            image: result.image, cheap: result.cheap, dairy_free: result.dairyFree, gluten_free: result.glutenFree, vegan: result.vegan, vegetarian: result.vegetarian, healthy: result.veryHealthy, user_id: userid.dataset.user
+                            image: result.image, cheap: result.cheap, dairy_free: result.dairyFree, gluten_free: result.glutenFree, vegan: result.vegan, vegetarian: result.vegetarian, healthy: result.veryHealthy
                         }
                     }
                     console.log(body);
