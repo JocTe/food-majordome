@@ -1,27 +1,28 @@
-.header {
+.footer {
   background-size: cover;
   // background-position: center;
-  height: 25vh;
-  width: 100vw;
-  position: relative;
+  height: 14vh;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   background-color: $my-green;
 
 
-  h1 {
+  h3 {
     position: absolute;
-    padding-top: 4em;
-    padding-left: 1em;
+    top: 60%;
+    left: 10%;
     font-size: 2em;
     color: $my-white;
   }
 }
 
-.bottom {
+.top {
   background-size: cover;
   height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 9vh;
+  width: 100%;
+  position: fixed;
+  bottom: 30%;
   clip-path: ellipse(50% 6% at 50% 16%);
   background-color: $my-green;
 }
