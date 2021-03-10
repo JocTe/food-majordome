@@ -28,6 +28,10 @@ import "bootstrap";
 // Internal imports, e.g:
 import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim';
 import { addDiet } from './add_diet';
+import { addNumberOfPeople } from './add_number_of_people';
+// import { addIngredientsDisliked } from './add_ingredients_disliked';
+// import { addIngredientsWanted } from './add_ingredients_wanted';
+
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -35,5 +39,9 @@ document.addEventListener('turbolinks:load', () => {
   initNavbarOnSelection();
   initNavbarOnScroll();
   addDiet();
+  addNumberOfPeople();
+  // addIngredientsDisliked();
+  // addIngredientsWanted();
+  
   // initSelect2();
 });

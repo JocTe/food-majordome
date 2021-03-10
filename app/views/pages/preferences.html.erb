@@ -1,45 +1,66 @@
 <div class="container">
   <h1>Tell us more about you:</h1>  
   
+  <h3>How many are you at home?</h3>
+  <input type="number" id="number_people">
+  
+
+
+  <h3>Your diet:</h3>
   <div class="container">
   <div class="row">
     <div class="col">
-      <div class="border diet" data-diet="vegan" data-state="false">
-        <p>Vegan</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="vegan" data-state="false">
+        <%= image_tag("diet_icons/vegan.svg", :alt => "vegan") %>
+        <p class="mb-0">Vegan</p>
       </div>
     </div>
     <div class="col">
-      <div class="border diet" data-diet="vegetarian" data-state="false">
-        <p>Vegetarian</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="vegetarian" data-state="false">
+        <%= image_tag("diet_icons/vegetarian.svg", :alt => "vegetarian") %>
+        <p class="mb-0">Vegetarian</p>
       </div>      
     </div>    
   </div>
   <div class="row">
     <div class="col">
-      <div class="border diet" data-diet="gluten-free" data-state="false">
-        <p>Gluten-free</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="gluten_free" data-state="false">
+        <%= image_tag("diet_icons/gluten-free.svg", :alt => "gluten-free") %>
+        <p class="mb-0">Gluten-free</p>
       </div>      
     </div>
     <div class="col">
-      <div class="border diet" data-diet="dairy-free" data-state="false">
-        <p>Dairy-free</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="dairy_free" data-state="false">
+        <%= image_tag("diet_icons/dairy-free.svg", :alt => "dairy-free") %>
+        <p class="mb-0">Dairy-free</p>
       </div> 
     </div>    
   </div>
   <div class="row">
     <div class="col">
-      <div class="border diet" data-diet="pescetarian" data-state="false">
-        <p>Pescetarian</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="pescetarian" data-state="false">
+        <%= image_tag("diet_icons/pescetarian.svg", :alt => "pescetarian") %>
+        <p class="mb-0">Pescetarian</p>
       </div>      
     </div>
     <div class="col">
-      <div class="border diet" data-diet="no-diet" data-state="true">
-        <p>No particular diet</p>
+      <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="no_diet" data-state="false">
+        <%= image_tag("diet_icons/no-diet.svg", :alt => "pescetarian") %>
+        <p class="mb-0">No particular diet</p>
       </div>      
     </div>    
   </div>
-</div>
   
+  <!-- Activate this code when we have the ingredients data. Complite the JS code then.
+  <h3>Any ingredient that you don't like?</h3>
+  <input type="text" id="disliked_ingredients">
+  <ul id="ingredients_disliked"></ul>
+  
+  <h3>Are there ingredients that you absolutly want to cook this week?</h3>
+  <input type="text" id="wanted_ingredients">
+  <ul id="ingredients_wanted"></ul>
+
+  -->
+
 </div>
 
-<%= console %>

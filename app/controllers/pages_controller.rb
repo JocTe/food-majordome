@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def preferences 
-    session["preferences"] = { vegan: false, vegetarian: false, gluten_free: false, dairy_free: false, pescetarian: false, no_diet: true }
+    session["preferences"] = { number_of_people: 1, vegan: false, vegetarian: false, gluten_free: false, dairy_free: false, pescetarian: false, no_diet: false, ingredients_disliked: [], ingredients_wanted: [] }
   end
 
   def submit_preferences

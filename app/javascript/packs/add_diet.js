@@ -14,13 +14,14 @@ const addDiet = () => {
       } else {
         event.currentTarget.dataset.state = "false";
       };
+
+      event.currentTarget.classList.toggle('selected');
       
       const diet = event.currentTarget.dataset.diet;
       const state = event.currentTarget.dataset.state
       const body = {
         preferences: { [diet]: state }
       }
-      console.log(body);
       fetchWithToken(url, {
         method: "POST",
         headers: {
@@ -30,9 +31,8 @@ const addDiet = () => {
         body: JSON.stringify(body),
        })
        .then(response => response.json())
-       .then((data) => {
-           // handle JSON response from server
-           console.log(data);
+       .then((data) => {           
+         console.log(data);
        });
 
     });
