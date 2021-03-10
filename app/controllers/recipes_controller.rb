@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 
     def create
         recipe = Recipe.new(recipe_params)
-        
+        recipe.user_id = current_user.id
         # authorize @recipe 
         if recipe.save
             render json: { success: true }

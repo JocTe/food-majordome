@@ -28,6 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim'
 import { fetchMenuRecipes } from "../plugins/spoonacularApi";
+import { initSaveRecipes } from "../plugins/initSaveRecipes";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -35,5 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   initNavbarOnSelection();
   initNavbarOnScroll();
   fetchMenuRecipes(); // execute this on page load of menu new
+  initSaveRecipes();
   // initSelect2();
 });

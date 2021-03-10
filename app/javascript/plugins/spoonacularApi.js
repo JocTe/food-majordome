@@ -1,4 +1,3 @@
-import { fetchWithToken } from "../utils/fetch_with_token";
 
 const apiKey = process.env.SPOONACULAR_KEY;
 
@@ -12,35 +11,24 @@ const fetchMenuRecipes = () => {
 
                 data.recipes.forEach(result => {
 
-                    // console.log(result);
                     const recipeTag = `<li class="recipe">
-                    <p>${result.title}</p>
+                        <p>${result.title}</p>
+                        <div class="recipe-params" data-id="${result.id}" data-servings="${result.servings}" data-prep-time="${result.readyInMinutes}" 
+                            data-score="${result.spoonacularScore}" data-health-score ="${result.healthScore}" data-name="${result.title}" 
+                            data-image="${result.image}" data-cheap="${result.cheap}" data-dairy-free="${result.dairyFree}" data-gluten-free="${result.glutenFree}" 
+                            data-vegan="${result.vegan}" data-vegetarian="${result.vegetarian}" data-healthy="${result.veryHealthy}" data-summary="${result.summary.split(".")[0]}">
+                        </div>
                     </li>`;
+
                     results.insertAdjacentHTML('beforeend', recipeTag);
-
-                    const body = {
-                        recipe: {
-                            servings: result.servings, prep_time: result.readyInMinutes, score: result.spoonacularScore, health_score: result.healthScore, name: result.title, summary: result.summary,
-                            image: result.image, cheap: result.cheap, dairy_free: result.dairyFree, gluten_free: result.glutenFree, vegan: result.vegan, vegetarian: result.vegetarian, healthy: result.veryHealthy
-                        }
-                    }
-                    console.log(body);
-
-                    fetchWithToken('/recipes', {
-                        method: "POST",
-                        headers: {
-                            "Accept": "application/json",
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(body)
-                    })
-                        .then(response => response.json())
-                        .then((data) => {
-                            console.log(data)
-                        })
+                    const recipe = document.querySelector(".recipe-params");
+                    console.log(recipe);
                 });
             });
+
     }
 };
+
+
 
 export { fetchMenuRecipes };
