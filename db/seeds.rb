@@ -22,8 +22,7 @@ end
 
 def creating_steps_of_recipe(recipe_json, recipe)
     recipe_json.each do |step|
-       image = step["equipment"].empty? ? "test" : step["equipment"][0]["image"]
-        p image
+        image = step["equipment"].empty? ? "notfound" : step["equipment"][0]["image"]
         new_step = Step.new(number: step["number"], description: step["step"], image: image)
         new_step.recipe = recipe
         new_step.save
@@ -32,9 +31,11 @@ end
 # puts JSON.pretty_generate(fetch_recipes_api({amount: 2, diet: "vegetarian"}))
 
 def create_recipes_and_associations(args = {})
-
+    puts "Will be creating #{args[:amount]} Recipe of #{args[:diet]} food"
     fetch_recipes_api(args).each do |recipe|
+
         puts "Creating Recipe name : #{recipe["title"]}"
+
         new_recipe = Recipe.create!(servings: recipe["servings"], prep_time: recipe["readyInMinutes"], score: recipe["spoonacularScore"],
             health_score: recipe["healthScore"], calories: recipe["nutrition"]["nutrients"][0]["amount"], name: recipe["title"], 
             summary: recipe["summary"], image: recipe["image"], cheap: recipe["cheap"], dairy_free: recipe["dairyFree"], gluten_free: recipe["glutenFree"],
@@ -72,7 +73,10 @@ end
 
 
 
-create_recipes_and_associations(amount: 1, diet: "vegetarian")
+create_recipes_and_associations(amount: 100, diet: "vegetarian")
+create_recipes_and_associations(amount: 100, diet: "vegan")
+create_recipes_and_associations(amount: 100, diet: "vegan")
+
 
 # Recipe.create!(servings: 2, prep_time:20, score:63.2, health_score:68, calories: 564, name: "Test", summary: "This is a test recipe", image:"https://spoonacular.com/cdn/ingredients_100x100/pineapple.jpg", cheap: true, dairy_free: true, gluten_free: false, vegan: false, vegetarian: false, healthy: true, pescetarian: true, cuisine: "French", author: "me", spoonacular_id:5665)
 
