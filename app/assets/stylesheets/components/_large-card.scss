@@ -1,0 +1,70 @@
+
+.large-card-container {
+  max-width: 350px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.card-menu {
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 530px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.card-menu-visual {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.card-menu-infos{
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 10px;
+  top: calc(68% - 100px);
+  color: #fff;
+}
+
+.card-menu-infos .infos-title {
+  font-size: 24px;
+  padding-top: 0;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+  top: 8px;
+}
+
+ .card-menu-infos .infos-rating {
+  padding-top: 0;
+  padding-left: 64px;
+  margin: 10px;
+  width: 100%;
+  top: 8px;
+}
+
+.card-menu-infos .infos-time {
+  padding-top: 0;
+  padding-left: 6px;
+  margin: 10px;
+  width: 100%;
+  top: 8px;
+}
+
+.card-menu-infos .infos-kcal {
+  padding-top: 0;
+  padding-left: 6px;
+  margin: 10px;
+  width: 100%;
+  top: 8px;
+}
