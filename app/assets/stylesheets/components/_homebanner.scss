@@ -1,0 +1,63 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin-bottom: 1.5em;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 22px;
+  color: white;
+  opacity: .8;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+h2 {
+  margin-bottom: 1em;
+}
+
+.grid-container {
+  margin-left: 0.5em;
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 12px 12px;
+  align-items: center;
+  grid-template-areas:
+    "Pic-1 Text-1"
+    "Pic-2 Text-2"
+    "Pic-3 Text-3"
+    "Pic-4 Text-4";
+
+  img {
+  width:50px;
+  height:50px;
+  object-fit: cover;
+  border-radius: 50%;
+  }
+}
+
+.Pic-1 { grid-area: Pic-1;}
+
+.Pic-2 { grid-area: Pic-2; }
+
+.Pic-3 { grid-area: Pic-3; }
+
+.Pic-4 { grid-area: Pic-4; }
+
+.Text-1 { grid-area: Text-1;}
+
+.Text-2 { grid-area: Text-2;}
+
+.Text-3 { grid-area: Text-3;}
+
+.Text-4 { grid-area: Text-4;}
+

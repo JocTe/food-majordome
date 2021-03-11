@@ -1,0 +1,17 @@
+.site-header {
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+  position: relative;
+  border-bottom-left-radius: 27%;
+  border-bottom-right-radius: 27%;
+  background-color: $my-green;
+
+  h1 {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    font-size: 2em;
+    color: $my-white;
+  }
+}

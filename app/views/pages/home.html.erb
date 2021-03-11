@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1540420773420-3366772f4999?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=631&q=80);">
+  <div class="container">
+    <h1>Food Majordome</h1>
+    <p>Never waist your time again doing menus and shopping !</p>
+    <%= render "shared/small_btn", text: "Get started", path: new_user_session_path, class:"btn" %>
+  </div>
+</div>
+
+<div class="container">
+  <h2>How does it works ?</h2>
+
+    <div class="grid-container">
+      <img class="Pic-1" src="https://images.unsplash.com/photo-1561222856-eb920e4960d0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt=""></img>
+      <img class="Pic-2" src="https://images.unsplash.com/photo-1595285203820-e3b1108345db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt=""></img>
+      <img class="Pic-3" src="https://media.organized-home.com/wp-content/uploads/2018/06/peg-and-awl-bake-house-market-bags-1536x1066.jpg" alt=""></img>
+      <img class="Pic-4" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="cooking"></img>
+      <div class="Text-1">Tell us more about you, your tastes and your family</div>
+      <div class="Text-2">We suggest you ideas of menus for the week</div>
+      <div class="Text-3">Once you confirmed, your shopping list is done</div>
+      <div class="Text-4">Enjoy cooking !</div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

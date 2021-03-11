@@ -22,7 +22,8 @@
   border-radius: 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   bottom: 20px;
-
+  z-index: 25;
+  
   &-list {
     list-style: none;
     width: 100%;
