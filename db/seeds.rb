@@ -31,6 +31,11 @@ def creating_steps_of_recipe(recipe_json, recipe)
         new_step = Step.new(number: step["number"], description: step["step"], image: image)
         new_step.recipe = recipe
         new_step.save
+        step["ingredients"].each do |ingredient|
+            if Ingredient.find_by(spoon_ingredient_id: ingredient["id"])
+                Ingredient.find_by(spoon_ingredient_id: ingredient["id"]).update(image: ingredient["image"])
+            end
+        end
     end
 end
 # puts JSON.pretty_generate(fetch_recipes_api({amount: 2, diet: "vegetarian"}))
@@ -49,16 +54,7 @@ def create_recipes_and_associations(args = {})
                 vegan: recipe["vegan"], vegetarian: recipe["vegetarian"], healthy: recipe["veryHealthy"], cuisines: recipe["cuisines"], diets: recipe["diets"], 
                 author: recipe["creditsText"], spoonacular_id: recipe["id"]
                 )
-            puts "--------------------------------------------------------------"
-
-            puts "Creating Steps for : #{recipe["title"]}"
-
-            creating_steps_of_recipe(recipe["analyzedInstructions"][0]["steps"], new_recipe)
-
-            puts "Steps done"
-
-            puts "-----------------------------------------------------------------"
-
+           
 
             puts "Creating Ingredients"
 
@@ -68,7 +64,7 @@ def create_recipes_and_associations(args = {})
                     i = Ingredient.find_by(name: ingredient["name"])
                     puts "FOUND : #{ingredient["name"]}"
                 else
-                    i = Ingredient.create!(name: ingredient["name"], image: "#{ingredient["name"].gsub(' ','-')}")
+                    i = Ingredient.create!(name: ingredient["name"], spoon_ingredient_id: ingredient["id"])
                     puts "NOT FOUND : #{ingredient["name"]} so it was created"
                 end
                 proportion = Proportion.new(unit: ingredient["unit"], amount: ingredient["amount"])
@@ -76,6 +72,16 @@ def create_recipes_and_associations(args = {})
                 proportion.ingredient = i
                 proportion.save!
             end
+
+            puts "--------------------------------------------------------------"
+
+            puts "Creating Steps for : #{recipe["title"]}"
+
+            creating_steps_of_recipe(recipe["analyzedInstructions"][0]["steps"], new_recipe)
+
+            puts "Steps done"
+
+            puts "-----------------------------------------------------------------"
         end
     end
 end
