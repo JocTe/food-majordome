@@ -4,6 +4,9 @@ class MenusController < ApplicationController
 
     def new
       @menu = Menu.new()
+      # Make a search on the recipe DB ?
+      # diplay this search
+      # ON SAVE : create an assossication of the recipe with the current menu through meal_plans table
     end
 
 

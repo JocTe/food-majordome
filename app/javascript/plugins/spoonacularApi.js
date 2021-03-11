@@ -5,7 +5,7 @@ const fetchMenuRecipes = () => {
     const results = document.getElementById("recipes");
 
     if (results) {
-        fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=5`) // Make a complex search based on preferences
+        fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1`) // Make a complex search based on preferences
             .then(response => response.json())
             .then((data) => {
 
