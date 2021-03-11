@@ -1,1 +1,5 @@
-<%= link_to text, path, class: "btn btn-secondary btn-block button-radius" %>
+<% if local_assigns[:path] %>
+    <%= link_to text, path, class: "btn btn-secondary btn-block button-radius #{identifier}"  %>
+<% else %>
+    <%= link_to text, "#", class: "btn btn-secondary btn-block button-radius #{identifier}"  %>
+<% end %>

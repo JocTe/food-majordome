@@ -3,8 +3,7 @@ class MenusController < ApplicationController
 
     def new
         @menu = Menu.new
-        @suggestions = Recipe.all.sample(5) # where preferences match get last 5
-        
+        @suggestions = Recipe.last(5) # where preferences match get last 5
         authorize @menu
     end
 
