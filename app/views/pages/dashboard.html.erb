@@ -1,0 +1,51 @@
+<%= render "shared/header", text:'Hello @user.name' %>
+
+<div class="container">
+  <div class="dashboard" data-target="dashboard">
+        <h3>Your diet:</h3>
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet">
+              <%= image_tag("dashboard_icons/calendar.svg", :alt => "calendar") %>
+              <p class="mb-0">My weekly menu</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
+              <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
+              <p class="mb-0">Cooking instructions</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
+              <%= image_tag("dashboard_icons/shopping.svg", :alt => "shopping") %>
+              <p class="mb-0">My shopping list</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
+              <%= image_tag("dashboard_icons/taste.svg", :alt => "preferences") %>
+              <p class="mb-0">My menu preferences</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
+              <%= image_tag("dashboard_icons/gift.svg", :alt => "surprise") %>
+              <p class="mb-0">Chef's surprise</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
+              <%= image_tag("dashboard_icons/settings.svg", :alt => "settings") %>
+              <p class="mb-0">Settings</p>
+            </div>
+          </div>
+        </div>
+        <%= render "shared/large_btn", text: "Validate", path: "/" %>
+    </div>
+</div>
