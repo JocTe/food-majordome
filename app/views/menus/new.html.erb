@@ -1,0 +1,7 @@
+<div class="menu-cards-list">
+    <% @suggestions.each do |suggestion| %>
+        <%= render  "shared/menu_cards", recipe: suggestion %>
+    <% end %>
+</div>
+
+<%= render  "shared/large_btn", text: "Valide my menu", path: "" %>
