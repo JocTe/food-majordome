@@ -1,14 +1,10 @@
-.question-full-screen{
+.current{
   height: 70vh;
+  display: flex !important;
+  flex-direction: column;
   text-align: center;
   align-items: center;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-}
-
-.current{
-  display: block !important;
 }
 
 .questionitem{

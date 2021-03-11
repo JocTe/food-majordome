@@ -3,8 +3,7 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   static targets = ['questionitem']    
   
-  connect() {
-    console.log(this.questionitemTargets);
+  connect() {    
     this.showQuestion();
   }
 

@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Tell us more about you:</h1>  
   
-  <div class="question-full-screen">
-    <div class="question" data-controller="question" data-question-index="0">
-      <div class="questionitem current" data-target="question.questionitem">
-        <h3 class="mb-3">How many are you at home?</h3>
-        <!-- <input type="number" id="number_people"> -->  
-        <select class="number_people mb-5" name="ice-cream">
+ 
+  <div class="question" data-controller="question" data-question-index="0">
+    <div class="questionitem current" data-target="question.questionitem">
+      <h3 class="mb-3">How many are you at home?</h3>
+      <!-- <input type="number" id="number_people"> -->  
+      <select class="number_people mb-5" name="ice-cream">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -16,11 +16,11 @@
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-        </select>        
-        <button class="btn btn-secondary button_rouded" data-action="click->question#next">Next</button>
-      </div>
+      </select>        
+      <button class="btn btn-secondary button_rouded" data-action="click->question#next">Next</button>
+    </div>
 
-      <div class="questionitem" data-target="question.questionitem">
+    <div class="questionitem" data-target="question.questionitem">
         <h3>Your diet:</h3>
         <div class="container">
         <div class="row">
@@ -63,13 +63,12 @@
               <%= image_tag("diet_icons/no-diet.svg", :alt => "pescetarian") %>
               <p class="mb-0">No particular diet</p>
             </div>      
-          </div>    
+          </div>          
         </div>
-      </div>
-
+        <%= render "shared/large_btn", text: "Validate", path: "/" %>
     </div>
-  </div>
-  
+
+  </div>  
   
   <!-- Activate this code when we have the ingredients data. Complite the JS code then.
   <h3>Any ingredient that you don't like?</h3>

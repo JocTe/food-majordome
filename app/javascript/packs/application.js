@@ -29,7 +29,6 @@ import "bootstrap";
 import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim';
 import { addDiet } from './add_diet';
 import { addNumberOfPeople } from './add_number_of_people';
-// import { moveToQuestTwo } from './move_to_quest_two';
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
 
@@ -40,8 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   initNavbarOnSelection();
   initNavbarOnScroll();
   addDiet();
-  addNumberOfPeople();
-  // moveToQuestTwo();
+  addNumberOfPeople();  
   // addIngredientsDisliked();
   // addIngredientsWanted();
 
