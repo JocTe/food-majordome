@@ -4,21 +4,11 @@ class MenusController < ApplicationController
 
     def new
       @menu = Menu.new()
-      # Make a search on the recipe DB ?
-      # diplay this search
-      # ON SAVE : create an assossication of the recipe with the current menu through meal_plans table
+      @suggestions = Recipe.all.sample(5)
     end
 
 
     private
 
-    def fetchRecipes(amount)
-      api_key = ENV['SPOONACULAR_KEY']
-      url = "https://api.spoonacular.com/recipes/random?apiKey=#{api_key}&number=#{amount}"
-      recipes_serialized = open(url).read
-      recipes = JSON.parse(recipes_serialized)
-      recipes.each do |recipe|
-        recipes[0].summary
-      end
-    end
+    
 end

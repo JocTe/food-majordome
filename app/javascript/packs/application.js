@@ -35,7 +35,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initNavbarOnSelection();
   initNavbarOnScroll();
-  fetchMenuRecipes(); // execute this on page load of menu new
-  initSaveRecipes();
+  // fetchMenuRecipes(); // execute this on page load of menu new
+  // initSaveRecipes();
   // initSelect2();
 });
