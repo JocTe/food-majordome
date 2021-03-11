@@ -1,51 +1,62 @@
 <%= render "shared/header", text:'Hello @user.name' %>
 
 <div class="container">
-  <div class="dashboard" data-target="dashboard">
-        <h3>Your diet:</h3>
-        <div class="container">
+  <div class="dashboard">
+      <div class="container" id="icons">
         <div class="row">
-          <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet">
-              <%= image_tag("dashboard_icons/calendar.svg", :alt => "calendar") %>
-              <p class="mb-0">My weekly menu</p>
+            <div class="col">
+              <a href="#" >
+                <div class="border-thin2 card-icon2 text-center py-2 mb-3 ">
+                  <%= image_tag("dashboard_icons/calendar.svg", :alt => "calendar") %>
+                  <p class="mb-0">My weekly menu</p>
+                </div>
+              </a>
             </div>
-          </div>
+
           <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
-              <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
-              <p class="mb-0">Cooking instructions</p>
-            </div>
+            <a href="#" >
+              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
+                <p class="mb-0">Cooking instructions</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
-              <%= image_tag("dashboard_icons/shopping.svg", :alt => "shopping") %>
-              <p class="mb-0">My shopping list</p>
-            </div>
+            <a href="#" >
+              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <%= image_tag("dashboard_icons/shopping.svg", :alt => "shopping") %>
+                <p class="mb-0">My shopping list</p>
+              </div>
+            </a>
           </div>
           <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
-              <%= image_tag("dashboard_icons/taste.svg", :alt => "preferences") %>
-              <p class="mb-0">My menu preferences</p>
-            </div>
+            <a href="<%= preferences_path %>" >
+              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <%= image_tag("dashboard_icons/taste.svg", :alt => "preferences") %>
+                <p class="mb-0">My menu preferences</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
-              <%= image_tag("dashboard_icons/gift.svg", :alt => "surprise") %>
-              <p class="mb-0">Chef's surprise</p>
-            </div>
+            <a href="https://media.giphy.com/media/LZElUsjl1Bu6c/giphy.gif" >
+              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <%= image_tag("dashboard_icons/gift.svg", :alt => "surprise") %>
+                <p class="mb-0">Chef's surprise</p>
+              </div>
+            </a>
           </div>
           <div class="col">
-            <div class="border-thin card-icon text-center py-2 mb-3 diet" >
-              <%= image_tag("dashboard_icons/settings.svg", :alt => "settings") %>
-              <p class="mb-0">Settings</p>
-            </div>
+            <a href="#" >
+              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <%= image_tag("dashboard_icons/settings.svg", :alt => "settings") %>
+                <p class="mb-0">Settings</p>
+              </div>
+            </a>
           </div>
         </div>
-        <%= render "shared/large_btn", text: "Validate", path: "/" %>
     </div>
 </div>
