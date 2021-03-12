@@ -29,10 +29,12 @@
   <ul class="list-no-dots row row-cols-3 mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
       <li>
-        <div class="ingredient-card">
-          <%= image_tag "oven.svg" %>
-          <p class="font-weight-bold text-center"><%= ingredient.name %></p>
-          <p><%=  %></p>
+        <div class="ingredient-card text-center">
+          <%= image_tag "groceries.svg" %>
+          <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
+          <% ingredient.proportions.each do |proportion|%>
+            <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+          <% end %>
         </div>
       </li>
     <% end %>
