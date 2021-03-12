@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController  
   def show    
-    @recipe = Recipe.find(1)
+    @recipe = Recipe.find(params[:id])
     authorize @recipe
   end
 end

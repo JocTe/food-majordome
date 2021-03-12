@@ -29,20 +29,23 @@
   <ul class="list-no-dots row row-cols-3 mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
       <li>
-        <div class="ingredient-card text-center">
-          <%= image_tag "groceries.svg" %>
+        <div class="ingredient-card text-center">          
+          <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
           <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
           <% ingredient.proportions.each do |proportion|%>
-            <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+            <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
+              <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+            <% end %>
           <% end %>
         </div>
       </li>
     <% end %>
   </ul>
 
-
+  <!-- Did not push description because there are HTML tags in the content
   <h5 class="mt-4">Description:</h5>
   <p><%= @recipe.summary %></p>
+  -->
   
   <h5 class="mt-4 mb-3">Instructions:</h5>
   <ul class="list-no-dots">
@@ -59,9 +62,6 @@
         </div>
       </li>
     <% end %>
-  </ul>
-  
-
-  
+  </ul>    
 
 </div>
