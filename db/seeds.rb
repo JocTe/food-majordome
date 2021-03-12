@@ -5,33 +5,97 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+require 'json'
 
-puts "creating recipe"
-recipe = Recipe.create!(servings: 4, prep_time:45, score:63.2, health_score:68, calories: 564, name: "Croque Monsieur", summary: "Jelly I love cookie croissant halvah lollipop pudding brownie. Jujubes cake bonbon topping halvah muffin I love I love. Gummies I love caramels gingerbread icing tart dessert pie. Marzipan cookie cotton candy. Caramels tart cheesecake. Chocolate cake gingerbread candy sugar plum. Marshmallow muffin jelly-o jelly-o. Croissant topping lemon drops biscuit sesame snaps cookie chocolate cake bear claw jelly beans. Marzipan donut gummi bears macaroon biscuit dessert pastry gummi bears.", 
-                image:"https://assets.afcdn.com/recipe/20170112/28965_w157h157c1.webp", cheap: true, dairy_free: true, gluten_free: true, vegan: true, vegetarian: true, healthy: true, 
-                pescetarian: true, cuisine: "French", author: "Favot Original", user_id: 1)
+puts "-----cleaning the DB-----"
+Recipe.destroy_all
+Ingredient.destroy_all
+Step.destroy_all
+Proportion.destroy_all
+puts "-------DB cleaned-----"
 
-
-ingredients = ["sel", "muscade", "jambon", "pain de mie", "beurre tendre", "toastinette", "gruyère rapé", "lait", "poivre"]
-ingredients.each do |ingredient|
-  Ingredient.create!(name: "#{ingredient}")  
+def fetch_recipes_api(args = {})
+    amount = args[:amount]
+    diet = args[:diet]
+    api_key = ENV['SPOONACULAR_KEY']
+    url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{api_key}&diet=#{diet}&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&ignorePantry=true&sort=meta-score&sortDirection=desc&type=main course,salad,soup,side dish&number=#{amount}"
+    recipes_serialized = open(url).read
+    recipes = JSON.parse(recipes_serialized)
+    recipes["results"]
 end
 
-# proportions
-puts "creating proportions"
+def creating_steps_of_recipe(recipe_json, recipe)
+    recipe_json.each do |step|
+        image = step["equipment"].empty? ? "notfound" : step["equipment"][0]["image"]
+        new_step = Step.new(number: step["number"], description: step["step"], image: image)
+        new_step.recipe = recipe
+        new_step.save
+        step["ingredients"].each do |ingredient|
+            if Ingredient.find_by(spoon_ingredient_id: ingredient["id"])
+                Ingredient.find_by(spoon_ingredient_id: ingredient["id"]).update(image: ingredient["image"])
+            end
+        end
+    end
+end
+# puts JSON.pretty_generate(fetch_recipes_api({amount: 2, diet: "vegetarian"}))
 
-Proportion.create!(ingredient_id: 2, recipe_id: 1, amount: 1, unit: "pincée")
-Proportion.create!(ingredient_id: 3, recipe_id: 1, amount: 4, unit: "tranches")
-Proportion.create!(ingredient_id: 4, recipe_id: 1, amount: 8, unit: "tranches")
-Proportion.create!(ingredient_id: 5, recipe_id: 1, amount: 50, unit: "g")
-Proportion.create!(ingredient_id: 6, recipe_id: 1, amount: 4, unit: "tranches")
-Proportion.create!(ingredient_id: 7, recipe_id: 1, amount: 100, unit: "g")
-Proportion.create!(ingredient_id: 8, recipe_id: 1, amount: 4, unit: "cs")
+def create_recipes_and_associations(args = {})
+    puts "Will be creating #{args[:amount]} Recipe of #{args[:diet]} food"
+    fetch_recipes_api(args).each do |recipe|
 
-# steps
-puts "creating setps"
+        unless recipe["analyzedInstructions"].empty?
+                
+            puts "Creating Recipe name : #{recipe["title"]}"
 
-Step.create!(recipe_id: 1,number: 1, description: "Beurrez les 8 tranches de pain de mie sur une seule face. Posez 1 tranche de fromage sur chaque tranche de pain de mie. Posez 1 tranche de jambon plié en deux sur 4 tranches de pain de mie. Recouvrez avec les autres tartines (face non beurrée au dessus).")
-Step.create!(recipe_id: 1,number: 2, description: "Dans un bol mélanger le fromage râpé avec le lait, le sel, le poivre et la muscade.")
-Step.create!(recipe_id: 1,number: 3, description: "Répartissez le mélange sur les croque-monsieur.")
-Step.create!(recipe_id: 1,number: 4, description: "Placez sur une plaque au four sous le grill pendant 10 mn.")
+            new_recipe = Recipe.create!(servings: recipe["servings"], prep_time: recipe["readyInMinutes"], score: recipe["spoonacularScore"],
+                health_score: recipe["healthScore"], calories: recipe["nutrition"]["nutrients"][0]["amount"], name: recipe["title"], 
+                summary: recipe["summary"], image: recipe["image"], cheap: recipe["cheap"], dairy_free: recipe["dairyFree"], gluten_free: recipe["glutenFree"],
+                vegan: recipe["vegan"], vegetarian: recipe["vegetarian"], healthy: recipe["veryHealthy"], cuisines: recipe["cuisines"], diets: recipe["diets"], 
+                author: recipe["creditsText"], spoonacular_id: recipe["id"]
+                )
+           
+
+            puts "Creating Ingredients"
+
+            recipe["nutrition"]["ingredients"].each do |ingredient|
+                # check if ingredient exist in the database
+                if Ingredient.find_by(name: ingredient["name"])
+                    i = Ingredient.find_by(name: ingredient["name"])
+                    puts "FOUND : #{ingredient["name"]}"
+                else
+                    i = Ingredient.create!(name: ingredient["name"], spoon_ingredient_id: ingredient["id"])
+                    puts "NOT FOUND : #{ingredient["name"]} so it was created"
+                end
+                proportion = Proportion.new(unit: ingredient["unit"], amount: ingredient["amount"])
+                proportion.recipe = new_recipe
+                proportion.ingredient = i
+                proportion.save!
+            end
+
+            puts "--------------------------------------------------------------"
+
+            puts "Creating Steps for : #{recipe["title"]}"
+
+            creating_steps_of_recipe(recipe["analyzedInstructions"][0]["steps"], new_recipe)
+
+            puts "Steps done"
+
+            puts "-----------------------------------------------------------------"
+        end
+    end
+end
+
+
+
+
+create_recipes_and_associations(amount: 100, diet: "vegetarian")
+create_recipes_and_associations(amount: 100, diet: "vegan")
+create_recipes_and_associations(amount: 100, diet: "pescetarian")
+create_recipes_and_associations(amount: 100, diet: "gluten free")
+create_recipes_and_associations(amount: 100, diet: "omnivore")
+
+
+
+# Recipe.create!(servings: 2, prep_time:20, score:63.2, health_score:68, calories: 564, name: "Test", summary: "This is a test recipe", image:"https://spoonacular.com/cdn/ingredients_100x100/pineapple.jpg", cheap: true, dairy_free: true, gluten_free: false, vegan: false, vegetarian: false, healthy: true, pescetarian: true, cuisine: "French", author: "me", spoonacular_id:5665)
+

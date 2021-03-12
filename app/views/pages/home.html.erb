@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Food Majordome</h1>
     <p>Never waist your time again doing menus and shopping !</p>
-    <%= render "shared/small_btn", text: "Get started", path: new_user_session_path, class:"btn" %>
+    <%= render "shared/small_btn", text: "Get started", path: preferences_path, class:"btn" %>
   </div>
 </div>
 <div class="container">
@@ -21,6 +21,9 @@
   </div>
 </div>
 
+  <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete%>
+
+  <%= link_to "Se connecter", new_user_session_path %>
 
 
 <%= render "shared/footer" %>
