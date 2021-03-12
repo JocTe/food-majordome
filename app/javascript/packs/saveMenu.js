@@ -6,13 +6,13 @@ const initSaveMenu = () => {
     const save = (event) => {
         event.preventDefault();
         const recipes = document.querySelectorAll(".menu-card");
-        let i = 0;
         const body = {};
+        const recipes_data = {};
+        recipes_data["recipes_data"] = []
         recipes.forEach(recipe => {
-            body[`recipe_data_${i}`] = { "recipe_id": recipe.dataset.recipeId, "date": recipe.dataset.recipeDate } // I want a hash recipes that store other hashes recipe
-            i++;
+            recipes_data[`recipes_data`].push({ "recipe_id": recipe.dataset.recipeId, "date": recipe.dataset.recipeDate }); // I want a hash recipes that store other hashes recipe
+
         });
-        console.log(body);
 
         fetchWithToken('/menus', {
             method: "POST",
@@ -20,7 +20,7 @@ const initSaveMenu = () => {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(recipes_data)
         })
             .then(response => response.json())
             .then((data) => {

@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :new ]
-
+    skip_after_action :verify_authorized
     def new
       @menu = Menu.new
       preferences = session["preferences"] 
@@ -17,31 +17,12 @@ class MenusController < ApplicationController
     end
 
     def create
-
-      recipe_data = session["recipe_data_0"]
-      params["recipe_data_0"].each do |key, value|
-        if recipe_data.key?(key)
-          recipe_data[key] = value
-        end
-      end
-      
-
-     render json: session["recipe_data"].to_json
-
-      # how do i assign a user to menu if I don't have one
-
-      # check if user is sign in, if not store recipe_info into the session
-       # then create the menu on the dashboard
-
-      # menu_plan = MenuPlan.new()
-      # menu_plan.menu = @menu
-      # menu_plan.recipe = Recipe.find(params["recipe_id"])
-      # # i need a date
-      # if menu_plan.save
-      #   redirect_to root_path
-      # else
-      #   render :new
+      session["recipes_data"] = params["recipes_data"]
+      # session["recipes_data"].each do |recipe|
+      #   recipe["recipe_id"]
       # end
+    
+     render json: session["recipes_data"].to_json
     end
 
 end
