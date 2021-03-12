@@ -38,7 +38,7 @@ import { initSaveMenu } from "./saveMenu";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  initNavbarOnSelection();
+  // initNavbarOnSelection();
   initNavbarOnScroll();
   addDiet();
   addNumberOfPeople();
