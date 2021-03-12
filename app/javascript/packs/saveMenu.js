@@ -14,8 +14,9 @@ const initSaveMenu = () => {
 
         });
 
-        fetchWithToken('/menus', {
+        fetchWithToken('/save_session', {
             method: "POST",
+            redirect: "follow",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -24,6 +25,7 @@ const initSaveMenu = () => {
         })
             .then(response => response.json())
             .then((data) => {
+                document.location.href = "/users/sign_in";
                 console.log(data)
             })
     };

@@ -1,5 +1,7 @@
+<%= render "shared/header", text: "Your week menu" %>  
+
 <div class="container">
-    <div class="menu-cards-list">
+    <div class="menu-cards-list mt-4">
         <% @suggestions.each_with_index do |suggestion, index| %>
             <% date = Date.today + index %>
              <h3 id="recipe-for-date" ><%= date.strftime("%A %d, %B")%></h3>
