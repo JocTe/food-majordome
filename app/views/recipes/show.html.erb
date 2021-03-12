@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <h5 class="mt-4">Ingredients:</h5>
+  <h5 class="mt-4 border-bottom-grey pb-2">Ingredients</h5>
   <ul class="list-no-dots row row-cols-3 mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
       <li>
@@ -47,19 +47,14 @@
   <p><%= @recipe.summary %></p>
   -->
   
-  <h5 class="mt-4 mb-3">Instructions:</h5>
+  <h5 class="mt-4 mb-3 border-bottom-grey pb-2">Instructions</h5>
   <ul class="list-no-dots">
     <% @recipe.steps.each do |step| %>
-      <li>
-        <div class="d-flex align-items-center mb-3 border-bottom-grey pb-2">
-          <div class="card-icon">
-            <%= image_tag "oven.svg" %>
-          </div>
-          <div class="pl-3">
-            <p class="font-weight-bold mb-0">Step <%= step.number %>:</p>
-            <p class="mb-0"><%= step.description %></p>        
-          </div>
-        </div>
+      <li>           
+        <div class="mb-4">
+          <p class="font-weight-bold mb-1">STEP <%= step.number %>:</p>
+          <p class="mb-0"><%= step.description %></p>        
+        </div>        
       </li>
     <% end %>
   </ul>    
