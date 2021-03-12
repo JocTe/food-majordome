@@ -1,6 +1,9 @@
+<%= console %>
 <div class="menu-cards-list">
-    <% @suggestions.each do |suggestion| %>
-        <%= render  "shared/menu_cards", recipe: suggestion %>
+    <% @suggestions.each_with_index do |suggestion, index| %>
+        <% date = Date.today + index %>
+         <h3 id="recipe-for-date" ><%= date.strftime("%A %d, %B")%></h3>
+        <%= render  "shared/menu_cards", recipe: suggestion, date: date %>
     <% end %>
 </div>
 

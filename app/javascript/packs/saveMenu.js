@@ -6,26 +6,26 @@ const initSaveMenu = () => {
     const save = (event) => {
         event.preventDefault();
         const recipes = document.querySelectorAll(".menu-card");
+        let i = 0;
+        const body = {};
         recipes.forEach(recipe => {
-            console.log(recipe.dataset.recipeId);
-            const body = {
-                "recipe_id": recipe.dataset.recipeId
-            }
-            console.log(body)
-            fetchWithToken('/menus', {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(body)
-            })
-                .then(response => response.json())
-                .then((data) => {
-                    console.log(data)
-                })
-
+            body[`recipe_data_${i}`] = { "recipe_id": recipe.dataset.recipeId, "date": recipe.dataset.recipeDate } // I want a hash recipes that store other hashes recipe
+            i++;
         });
+        console.log(body);
+
+        fetchWithToken('/menus', {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data)
+            })
     };
 
     const button = document.querySelector(".save-btn-menu");
