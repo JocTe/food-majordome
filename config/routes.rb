@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   get "/preferences", to: "pages#preferences"
   post "/preferences", to: "pages#submit_preferences"
+  post "/save_session", to: "menus#save_to_session"
 
   resources :menus, only: [:new, :show, :create]
 
