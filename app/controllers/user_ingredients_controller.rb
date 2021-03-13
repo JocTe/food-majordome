@@ -32,7 +32,7 @@ class UserIngredientsController < ApplicationController
       
       # //! Proportion.where(ingredient_id: 1865, recipe_id:1236).group(:ingredient).sum(:amount) group by ingredients
       sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
-      user_ingredient = UserIngredient.create(status: "not bought", quantity: sum_amounts, user: current_user, ingredient: ingredient)
+      user_ingredient = UserIngredient.create(status: false, quantity: sum_amounts, user: current_user, ingredient: ingredient)
     else
       sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
       user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id)
