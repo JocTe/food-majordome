@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_many :user_ingredients
   has_many :reviews
   has_many :recipe_preferences
-  has_many :recipes
   has_many :menus
 
   # Include default devise modules. Others available are:

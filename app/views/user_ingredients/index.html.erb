@@ -1,0 +1,6 @@
+<ul>
+    <% @user_ingredients.each do |task| %>
+    <li><%= task.ingredient.name %> - <%= task.quantity %></li>
+    <% end %>
+</ul>
+<%= console %>
