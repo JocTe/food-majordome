@@ -4,16 +4,17 @@ class UserIngredientsController < ApplicationController
   skip_after_action :verify_authorized
 
   def index
-    @menu = current_user.menus.empty? ? create_menu : current_user.menus.last
+    @menu = current_user.menus.empty? ? create_menu : current_user.menus.last #//? maybe check if it's the same menu than session
     # //? How should I work it here - There is multipe proportion for one ingredient
     # //? Also how do I take the unit should I make a request call to the api to convert them?
     # //? GET https://api.spoonacular.com/recipes/{id}/ingredientWidget.json
-
-    @menu.recipes.each do |recipe|
-      recipe.ingredients.each do |ingredient|
-    # //! ITERATE ON THE PROPORTIONS INSTEAD OF INGREDIENT, THEN ADD INGREDIENTS TOGETHER, THEN COMBINE EVERY INGREDIents
-    # //! add each found ingredients in recipes to an array, combines the same ingredients together BUT how do I get the proportions?
-        create_user_ingredients(ingredient, recipe)
+    if UserIngredient.count == 0 # //* This check if the shopping list is empty - The menu don't change now, because I need to destroy the shopping list when a new menu is made
+      @menu.recipes.each do |recipe|
+        recipe.ingredients.each do |ingredient|
+      # //! ITERATE ON THE PROPORTIONS INSTEAD OF INGREDIENT, THEN ADD INGREDIENTS TOGETHER, THEN COMBINE EVERY INGREDIents
+      # //! add each found ingredients in recipes to an array, combines the same ingredients together BUT how do I get the proportions?
+          create_user_ingredients(ingredient, recipe)
+        end
       end
     end
 
@@ -26,6 +27,7 @@ class UserIngredientsController < ApplicationController
 
   private
 
+  # //! SHould only be called once by menu
   def create_user_ingredients(ingredient, recipe)
 
     if UserIngredient.find_by(ingredient_id: ingredient.id).nil?
@@ -36,7 +38,7 @@ class UserIngredientsController < ApplicationController
     else
       sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
       user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id)
-     
+     # //! ISSUE : This add an amount each time I go to the shopping list and shopping list is slow.
       user_ingredient.update(quantity: user_ingredient.quantity.to_f + sum_amounts ) #//? maybe change quantity to a float
     
     end   
@@ -49,6 +51,7 @@ class UserIngredientsController < ApplicationController
   end
 
   def create_menu
+    UserIngredient.destroy_all # //! This destroy all the shopping list because you create a menu
     @menu = Menu.new
     @menu.user = current_user
     session["recipes_data"].each do |recipe|
