@@ -1,7 +1,13 @@
 <div class="container">
     <div class="row">
+  
         <% @user_ingredients.each do |task| %>
-            <div class="col-sm-6"><%= task.ingredient.name %> - <%= task.quantity %></div>
-        <% end %>
+            <div class="col-sm-12 shopping-card">
+                <div class="shopping-card-img" style="background-image:url(https://spoonacular.com/cdn/ingredients_100x100/<%=task.ingredient.image%>);"></div>
+                <p><%= task.ingredient.name %> - <%= task.quantity %></p>
+                <input type="checkbox" name="" id="">
+            </div>
+          
+          <% end %>
     </div>
 </div>
