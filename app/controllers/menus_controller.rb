@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
 
   before_action :set_user, only: [:show, :new, :create]
-  before_action :set_menu, only: [:show]
+  # before_action :set_menu, only: [:show]
 
   def show
     @menu = Menu.new
