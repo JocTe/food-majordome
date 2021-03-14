@@ -1,6 +1,7 @@
-<ul>
-    <% @user_ingredients.each do |task| %>
-    <li><%= task.ingredient.name %> - <%= task.quantity %></li>
-    <% end %>
-</ul>
-<%= console %>
+<div class="container">
+    <div class="row">
+        <% @user_ingredients.each do |task| %>
+            <div class="col-sm-6"><%= task.ingredient.name %> - <%= task.quantity %></div>
+        <% end %>
+    </div>
+</div>

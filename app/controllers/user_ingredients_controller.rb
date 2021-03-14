@@ -1,6 +1,6 @@
 class UserIngredientsController < ApplicationController
   
-  skip_before_action :authenticate_user!, only: [ :index ] # TO DELET LOOK AT PUNDIT SCOPE
+   # TO DELET LOOK AT PUNDIT SCOPE
   skip_after_action :verify_authorized
 
   def index
