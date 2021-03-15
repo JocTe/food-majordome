@@ -8,7 +8,7 @@
       <div class="scrolling-container">
         <img class="scrolling-images" src="<%= menu.recipe.image %>" alt="recipe-image">
         <div class="scrolling-informations">
-          <h2><%=menu.recipe.name.truncate(20)%></h2>
+          <h3><%=menu.recipe.name.truncate(20)%></h3>
           <p><i class="far fa-hourglass"></i> <%= menu.recipe.prep_time.to_i %> minutes </p>
           <p><i class="fas fa-star"></i>  <%= number = (((menu.recipe.score/100) / 2)*10).round %> /5  </p>
           <p><i class="fas fa-fire-alt"></i> <%= menu.recipe.calories.round %> calories </p>
