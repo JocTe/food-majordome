@@ -1,6 +1,8 @@
 class MenusController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new, :save_to_session ]
   skip_after_action :verify_authorized
+  before_action :set_user, only: [:show]
+  before_action :set_menu, only: [:show]
 
   def new
     # policy_scope(Recipe)
@@ -18,17 +20,15 @@ class MenusController < ApplicationController
     authorize @menu
   end
 
-  def show
-  @menu = Menu.new
-  authorize @menu
-  end
-
   def save_to_session
   session["recipes_data"] = params["recipes_data"]
   render json: session["recipes_data"].to_json
   end
 
-    private
+  def show
+  end
+
+  private
   def menu_params
     params.require(:menu).permit()
   end
