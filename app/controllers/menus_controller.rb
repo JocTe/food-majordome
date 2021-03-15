@@ -26,6 +26,7 @@ class MenusController < ApplicationController
   end
 
   def show
+    @menu = @menu.recipes
   end
 
   private
@@ -38,7 +39,7 @@ class MenusController < ApplicationController
   end
 
   def set_menu
-    @menu = Menu.find(params[:id])
+    @menu = Menu.last
     authorize @menu
   end
 end

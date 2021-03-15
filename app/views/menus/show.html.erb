@@ -1,45 +1,24 @@
 <%= render 'shared/header', text:"Your menu this week" %>
 
 <div class="scrolling-wrapper">
+  <% @menu.each do |menu|  %>
   <div class="scrolling-card">
     <h2>Lundi 15 mars</h2>
     <div class="scrolling-container">
-    <img class="scrolling-images" src="https://spoonacular.com/recipeImages/716429-556x370.jpg" alt="">
-    <div class="scrolling-informations">
-      <h2>Pasta al carbonara</h2>
-      <p>Preparation time : </p>
-      <p>Rating : 4/5</p>
-      <p> Calories : 550</p>
-    </div>
-    </div>
-  </div>
-
-  <div class="scrolling-card">
-    <h2>Mardi 16 mars</h2>
-    <div class="scrolling-container">
-    <img class="scrolling-images" src="https://spoonacular.com/recipeImages/716426-636x393.jpg" alt="">
-    <div class="scrolling-informations">
-      <h2>Pasta al carbonara</h2>
-      <p>Preparation time : 45 minutes</p>
-      <p>Rating : 4/5</p>
-      <p> Calories : 550</p>
-    </div>
+      <img class="scrolling-images" src="<%= menu.image %>" alt="">
+      <div class="scrolling-informations">
+        <h2> <%= menu.name.truncate_words(2) %></h2>
+        <p> <%= menu.cuisines %> </p>
+        <p>Preparation time: <%= menu.prep_time.to_i %> minutes </p>
+        <p>Rating : <%= (((menu.score/100) / 2)*10).round %>/5 </p>
+        <p> Calories : <%= menu.calories.round %></p>
+      </div>
     </div>
   </div>
-
-  <div class="scrolling-card">
-    <h2>Mercredi 17 mars</h2>
-    <div class="scrolling-container">
-    <img class="scrolling-images" src="https://spoonacular.com/recipeImages/716426-636x393.jpg" alt="">
-    <div class="scrolling-informations">
-      <h2>Pasta al carbonara</h2>
-      <p>Preparation time : 45 minutes</p>
-      <p>Rating : 4/5</p>
-      <p> Calories : 550</p>
-    </div>
-    </div>
-  </div>
+  <% end %>
 </div>
+
+<%= render 'shared/navbar' %>
 
 <%= console %>
 
