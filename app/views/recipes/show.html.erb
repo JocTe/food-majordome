@@ -34,7 +34,7 @@
           <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
           <% ingredient.proportions.each do |proportion|%>
             <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
-              <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+              <p class="mb-0"><%= proportion.amount.to_f %> <%= proportion.unit %></p>
             <% end %>
           <% end %>
         </div>
