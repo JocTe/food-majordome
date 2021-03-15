@@ -26,19 +26,17 @@ class MenusController < ApplicationController
   end
 
   def show
+    @menuplans = @menu.menu_plans
+
   end
 
   private
-  def menu_params
-    params.require(:menu).permit()
-  end
-
   def set_user
     @user = current_user
   end
 
   def set_menu
-    @menu = Menu.find(params[:id])
+    @menu = Menu.last
     authorize @menu
   end
 end
