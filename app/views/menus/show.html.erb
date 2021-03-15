@@ -2,7 +2,7 @@
 
 <div class="scrolling-wrapper">
   <% @menuplans.each do |menu|  %>
-  <a href="<%=recipe_path(menu.recipe_id)%>">
+  <a href="<%=instructions_recipe_path(menu.recipe_id)%>">
     <div class="scrolling-card">
       <h2> <%= menu.date.strftime("%A %d, %B")%>  </h2>
       <div class="scrolling-container">
