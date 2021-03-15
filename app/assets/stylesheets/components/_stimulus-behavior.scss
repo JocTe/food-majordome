@@ -1,0 +1,32 @@
+.current{
+  height: 70vh;
+  display: flex !important;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionitem{
+  display: none;  
+}
+
+.recipeitem{
+  display: none;
+}
+
+.current-step{
+  display: flex !important;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-vertically{
+  height: 70vh;
+}
+
+
+
+
