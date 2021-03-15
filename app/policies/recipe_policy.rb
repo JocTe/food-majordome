@@ -8,4 +8,9 @@ class RecipePolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def instructions?
+    # to change when we can attribute the recipe to the user :
+    true
+  end
 end
