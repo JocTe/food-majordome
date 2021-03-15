@@ -25,7 +25,7 @@ const initSaveMenu = () => {
         })
             .then(response => response.json())
             .then((data) => {
-                document.location.href = "/users/sign_in";
+                document.location.href = "/shoppinglist";
                 console.log(data)
             })
     };

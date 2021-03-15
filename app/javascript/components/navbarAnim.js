@@ -5,6 +5,7 @@ const initNavbarOnSelection = () => {
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            document.location.replace(link.href);
             if (!link.classList.contains('active')) {
                 const active = document.querySelector('.navigation-link.active');
                 if (active !== null) {
@@ -12,6 +13,7 @@ const initNavbarOnSelection = () => {
                 }
                 link.classList.add('active');
             }
+
         })
     })
 
