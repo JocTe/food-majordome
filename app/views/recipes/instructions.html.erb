@@ -36,8 +36,8 @@
               <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
               <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
               <% @recipe.proportions.each do |proportion|%>
-                <% if proportion.ingredient == ingredient && proportion.recipe == @recipe %>
-                  <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+                <% if proportion.ingredient == ingredient %>
+                  <p class="mb-0"><%= proportion.amount %> <%= proportion.unit %></p>
                 <% end %>
               <% end %>
             </div>
