@@ -16,7 +16,10 @@ class PagesController < ApplicationController
   end
 
   def submit_preferences
-    current_user.menus.destroy_all
+    if user_signed_in?
+      current_user.menus.destroy_all
+    end
+    
     preferences = session["preferences"]
     params["preferences"].each do |key, value|
       if preferences.key?(key)
