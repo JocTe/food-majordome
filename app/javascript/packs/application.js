@@ -37,12 +37,13 @@ import { loadingScreenTyped } from '../components/loadingScreen';
 
 // import { initSelect2 } from '../components/init_select2';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  initNavbarOnSelection();
-  initNavbarOnScroll();
-  addDiet();
   addNumberOfPeople();
+  addDiet();
+  initNavbarOnSelection();
+  initNavbarOnScroll();  
   initSaveMenu();
   // addIngredientsDisliked();
   // addIngredientsWanted();
