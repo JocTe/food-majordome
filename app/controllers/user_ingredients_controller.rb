@@ -67,6 +67,7 @@ class UserIngredientsController < ApplicationController
 
   def create_menu
     UserIngredient.destroy_all # //! This destroy all the shopping list because you create a menu
+    # current_user.update(number_of_people: session[""])
     @menu = Menu.new
     @menu.user = current_user
     session["recipes_data"].each do |recipe|
