@@ -1,52 +1,80 @@
-<%= render "shared/header", text: "Ready? Let's cook!" %>  
+<%= render "shared/header", text: "Ready... Let's cook!" %>  
 
 <div class="container">
-  <div>
-    <div class="text-center mb-2">
-      <h2 class="mt-4 mb-3"><%= @recipe.name %></h2>
-      <img src="<%=@recipe.image%>" alt="<%=@recipe.name%> picture" class="image-large image-radius">
-    </div>
 
-    <div class="d-flex justify-content-around">
-      <div class="d-flex align-items-center">
-        <i class="far fa-clock text-primary"></i>
-        <p class="pl-1 mb-0"><%= @recipe.prep_time.to_i %> min.</p>
+  <div class="recipe" data-controller="recipe" data-recipe-index="0">
+    <div class="recipeitem current-step" data-target="recipe.recipeitem">
+      <div class="text-center mb-2">
+        <h2 class="mt-4 mb-3"><%= @recipe.name %></h2>
+        <img src="<%=@recipe.image%>" alt="<%=@recipe.name%> picture" class="image-large image-radius">
       </div>
-      <div class="d-flex align-items-center">
-        <i class="fas fa-fire-alt text-primary"></i>
-        <p class="pl-1 mb-0"><%= @recipe.calories.to_i %> Kcal</p>
-      </div>
-      <div class="d-flex align-items-center">
-        <i class="fas fa-user-friends text-primary"></i>
-        <p class="pl-1 mb-0"><%= @recipe.servings %> pers.</p>
-      </div>
-    </div>
 
-    <h5 class="mt-4">Ingredients:</h5>
-    <ul class="list-no-dots row row-cols-3 mt-2">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li>
-          <div class="ingredient-card text-center">          
-            <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
-            <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
-            <% ingredient.proportions.each do |proportion|%>
-              <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
-                <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+      <div class="d-flex justify-content-around">
+        <div class="d-flex align-items-center">
+          <i class="far fa-clock text-primary"></i>
+          <p class="pl-1 mb-0"><%= @recipe.prep_time.to_i %> min.</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-fire-alt text-primary"></i>
+          <p class="pl-1 mb-0"><%= @recipe.calories.to_i %> Kcal</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-user-friends text-primary"></i>
+          <p class="pl-1 mb-0"><%= @recipe.servings %> pers.</p>
+        </div>
+      </div>
+
+      <h5 class="mt-4">Ingredients:</h5>
+      <ul class="list-no-dots row row-cols-3 mt-2">
+        <% @recipe.ingredients.each do |ingredient| %>
+          <li>
+            <div class="ingredient-card text-center">          
+              <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
+              <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
+              <% ingredient.proportions.each do |proportion|%>
+                <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
+                  <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <div class="btn-background-white">
+        <button class="btn btn-secondary btn-block button-radius" data-action="click->recipe#next">Next</button>
+      </div>
+    </div>
+
+    <% @recipe.steps.each do |step| %>
+      <div class="recipeitem centered-vertically" data-target="recipe.recipeitem">
+        <!-- <div class="text-center"> -->
+          <h3 class="mb-5">STEP <%= step.number %></h3>
+          <div class="chip-grey ">
+            <%= image_tag(step.image != "notfound" ?  image_path("https://spoonacular.com/cdn/equipment_100x100/#{step.image}") : image_path("check-box.svg"), class: "image-no-background") %>
           </div>
-        </li>
-      <% end %>
-    </ul>
+          <p class="mt-5"><%= step.description %></p>
+        <!-- </div>v -->
+        <div class="btn-background-white">
+          <button class="btn btn-secondary btn-block button-radius" data-action="click->recipe#next">Next</button>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="recipeitem centered-vertically" data-target="recipe.recipeitem">
+      <h3 class="mb-3">Congratulations !</h3>
+      <iframe src="https://giphy.com/embed/xT8qBepJQzUjXpeWU8" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <p class="mt-3">Hmmm Seems yummy! Enjoy your meal !</p>
+      <div class="btn-background-white">
+        <a class="btn btn-secondary btn-block button-radius" href="<%= dashboard_path %>"><i class="fas fa-home navigation-icon"></i></a>
+      </div>
+    </div>
+  
+    
   </div>
 
-  <% @recipe.steps.each do |step| %>
-    <div class="text-center">
-      <h3>STEP <%= step.number %></h3>
-      <div class="chip-green ">
-        <%= image_tag(step.image != "notfound" ?  image_path("https://spoonacular.com/cdn/equipment_100x100/#{step.image}") : image_path("check-box.svg"), class: "image-no-background") %>
-      </div>
-      <p><%= step.description %></p>
-    </div>
-  <% end %>
+
+  
+  
+
+    
 </div>
