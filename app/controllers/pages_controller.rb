@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def submit_preferences
+    Menu.destroy_all # Quick fix for shoppinglist
     preferences = session["preferences"]
     params["preferences"].each do |key, value|
       if preferences.key?(key)
