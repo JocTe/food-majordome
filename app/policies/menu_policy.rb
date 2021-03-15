@@ -5,7 +5,6 @@ class MenuPolicy < ApplicationPolicy
     end
   end
   
-
   def show?
     true
   end
