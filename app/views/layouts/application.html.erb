@@ -12,12 +12,10 @@
   </head>
 
   <body>
-
-    <% if current_page?(root_path) || current_page?(dashboard_path) ||  current_page?(shoppinglist_path)|| current_page?(menu_path)%>
-    <%= render  "shared/navbar" %>
-    <% end %>
+    
     <%= render 'shared/flashes' %>
     <%= yield %>
+    
 
 
   </body>
