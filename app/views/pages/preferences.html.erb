@@ -16,8 +16,11 @@
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-      </select>        
-      <button class="btn btn-secondary button_rouded" data-action="click->question#next">Next</button>
+      </select>
+
+      <div class="btn-background-white">
+        <button class="btn btn-secondary btn-block button-radius" data-action="click->question#next">Next</button>
+      </div>      
     </div>
 
     <div class="questionitem" data-question-target="questionitem">
@@ -65,9 +68,12 @@
             </div>      
           </div>          
         </div>
-        <%= render "shared/large_btn", text: "Validate", path: new_menu_path %>
-    </div>
 
+        <div class="btn-background-white">
+          <a class="btn btn-secondary btn-block button-radius" href="<%= new_menu_path %>">Validate</a>
+        </div> 
+        
+    </div>
   </div>  
   
   <!-- Activate this code when we have the ingredients data. Complite the JS code then.
