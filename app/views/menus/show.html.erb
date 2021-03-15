@@ -1,24 +1,22 @@
 <%= render 'shared/header', text:"Your menu this week" %>
 
 <div class="scrolling-wrapper">
-  <% @menu.each do |menu|  %>
-  <div class="scrolling-card">
-    <h2>Lundi 15 mars</h2>
-    <div class="scrolling-container">
-      <img class="scrolling-images" src="<%= menu.image %>" alt="">
-      <div class="scrolling-informations">
-        <h2> <%= menu.name.truncate_words(2) %></h2>
-        <p> <%= menu.cuisines %> </p>
-        <p>Preparation time: <%= menu.prep_time.to_i %> minutes </p>
-        <p>Rating : <%= (((menu.score/100) / 2)*10).round %>/5 </p>
-        <p> Calories : <%= menu.calories.round %></p>
+  <% @menuplans.each do |menu|  %>
+  <a href="<%=recipe_path(menu.recipe_id)%>">
+    <div class="scrolling-card">
+      <h2> <%= menu.date.strftime("%A %d, %B")%>  </h2>
+      <div class="scrolling-container">
+        <img class="scrolling-images" src="<%= menu.recipe.image %>" alt="recipe-image">
+        <div class="scrolling-informations">
+          <h2><%=menu.recipe.name.truncate(20)%></h2>
+          <p><i class="far fa-hourglass"></i> <%= menu.recipe.prep_time.to_i %> minutes </p>
+          <p><i class="fas fa-star"></i>  <%= number = (((menu.recipe.score/100) / 2)*10).round %> /5  </p>
+          <p><i class="fas fa-fire-alt"></i> <%= menu.recipe.calories.round %> calories </p>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
   <% end %>
 </div>
 
 <%= render 'shared/navbar' %>
-
-<%= console %>
-

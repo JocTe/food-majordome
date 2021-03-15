@@ -26,14 +26,11 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = @menu.recipes
+    @menuplans = @menu.menu_plans
+
   end
 
   private
-  def menu_params
-    params.require(:menu).permit()
-  end
-
   def set_user
     @user = current_user
   end

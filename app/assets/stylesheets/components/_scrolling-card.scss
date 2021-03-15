@@ -17,6 +17,11 @@
     margin-bottom: 3px;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .scrolling-card {
     display: inline-block;
     width: 100vw;
