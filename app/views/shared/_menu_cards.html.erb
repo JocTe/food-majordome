@@ -1,9 +1,14 @@
-<div class="menu-card">
-    <img src="https://www.atelierdeschefs.com/media/recette-e23473-pommes-de-terre-facon-arrabbiata-et-gambas-au-basilic.jpg" class="menu-card-img">
+<div class="menu-card mb-4" data-recipe-id= "<%=recipe.id%>" data-recipe-date = "<%=date%>">
+    <img src= "<%=recipe.image%>" class="menu-card-img">
     <div class="menu-card-content">
-        <h4 class="menu-card-content-title">Recipe name</h4>
-        <span><i class="fas fa-star"></i>4.5</span>
-        <p><span>300Kcal</span> || <span>30min</span></p>
-        <div class="menu-card-content-arrow"><i class="fas fa-chevron-right"></i></div>
+        <h6 class="menu-card-content-title"><%= recipe.name.truncate_words(7) %></h6>
+        <div class="menu-card-content-score"><i class="fas fa-star"></i><%= (((recipe.score/100) / 2)*10).round %>/5 </div>
+        <p><span><%= recipe.calories.round %>Kcal</span> || <span><%= recipe.prep_time.round %> min</span></p>
+        
+        <div class="menu-card-content-arrow">
+            <%= link_to recipe_path(recipe) do %>
+                <i class="fas fa-chevron-right"></i>
+            <% end %>
+        </div>
     </div>
 </div>

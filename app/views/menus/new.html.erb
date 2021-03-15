@@ -1,0 +1,13 @@
+<%= render "shared/header", text: "Your week menu" %>  
+
+<div class="container">
+    <div class="menu-cards-list mt-4">
+        <% @suggestions.each_with_index do |suggestion, index| %>
+            <% date = Date.today + index %>
+             <h3 id="recipe-for-date" ><%= date.strftime("%A %d, %B")%></h3>
+            <%= render  "shared/menu_cards", recipe: suggestion, date: date %>
+        <% end %>
+    </div>
+    
+    <%= render  "shared/large_btn", text: "Valide my menu", identifier: "save-btn-menu", remote: true %>
+</div>

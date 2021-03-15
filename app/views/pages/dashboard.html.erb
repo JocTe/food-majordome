@@ -1,4 +1,4 @@
-<%= render "shared/header", text:'Hello @user.name' %>
+<%= render "shared/header", text:'Hello Favot' %>
 
 <div class="container">
   <div class="dashboard">
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <a href="#" >
+            <a href="<%= shoppinglist_path %>" >
               <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
                 <%= image_tag("dashboard_icons/shopping.svg", :alt => "shopping") %>
                 <p class="mb-0">My shopping list</p>

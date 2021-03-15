@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="mt-3">
+    <%= link_to new_menu_path do %>
+        <i class="fas fa-arrow-left arrow-black"></i>
+    <% end %>
+  </div>
+
+  <div class="text-center mb-2">
+    <h2 class="mt-4 mb-3"><%= @recipe.name %></h2>
+    <img src="<%=@recipe.image%>" alt="<%=@recipe.name%> picture" class="image-large image-radius">
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class="d-flex align-items-center">
+      <i class="far fa-clock text-primary"></i>
+      <p class="pl-1 mb-0"><%= @recipe.prep_time.to_i %> min.</p>
+    </div>
+    <div class="d-flex align-items-center">
+      <i class="fas fa-fire-alt text-primary"></i>
+      <p class="pl-1 mb-0"><%= @recipe.calories.to_i %> Kcal</p>
+    </div>
+    <div class="d-flex align-items-center">
+      <i class="fas fa-user-friends text-primary"></i>
+      <p class="pl-1 mb-0"><%= @recipe.servings %> pers.</p>
+    </div>
+  </div>
+
+  <h5 class="mt-4 border-bottom-grey pb-2">Ingredients</h5>
+  <ul class="list-no-dots row row-cols-3 mt-2">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <div class="ingredient-card text-center">          
+          <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
+          <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
+          <% ingredient.proportions.each do |proportion|%>
+            <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
+              <p class="mb-0"><%= proportion.amount.to_i %> <%= proportion.unit %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <!-- Did not push description because there are HTML tags in the content
+  <h5 class="mt-4">Description:</h5>
+  <p><%= @recipe.summary %></p>
+  -->
+  
+  <h5 class="mt-4 mb-3 border-bottom-grey pb-2">Instructions</h5>
+  <ul class="list-no-dots">
+    <% @recipe.steps.each do |step| %>
+      <li>           
+        <div class="mb-4">
+          <p class="font-weight-bold mb-1">STEP <%= step.number %></p>
+          <p class="mb-0"><%= step.description %></p>        
+        </div>        
+      </li>
+    <% end %>
+  </ul>    
+
+</div>

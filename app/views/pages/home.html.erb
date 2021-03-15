@@ -2,7 +2,11 @@
   <div class="container">
     <h1>Food Majordome</h1>
     <p>Never waist your time again doing menus and shopping !</p>
+    <% if current_user == nil %>
     <%= render "shared/small_btn", text: "Get started", path: preferences_path, class:"btn" %>
+    <% else %>
+    <%= render "shared/small_btn", text: "Get started", path: dashboard_path, class:"btn" %>
+    <% end %>
   </div>
 </div>
 <div class="container">
@@ -20,10 +24,5 @@
     </div>
   </div>
 </div>
-
-  <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete%>
-
-  <%= link_to "Se connecter", new_user_session_path %>
-
 
 <%= render "shared/footer" %>
