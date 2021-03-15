@@ -21,3 +21,9 @@
   height: auto;  
   mix-blend-mode: multiply;
 }
+
+.gif-full-width{
+  width: 100vw;
+  height: auto;
+  object-fit: cover;   
+}
