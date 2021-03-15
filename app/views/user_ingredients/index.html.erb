@@ -4,7 +4,7 @@
         <% @user_ingredients.each do |task| %>
             <div class="col-sm-12 shopping-card">
                 <div class="shopping-card-img" style="background-image:url(https://spoonacular.com/cdn/ingredients_100x100/<%=task.ingredient.image%>);"></div>
-                <p><%= task.ingredient.name %> - <%= task.quantity %>- grams</p>
+                <p><%= task.ingredient.name %> - <%= task.quantity %></p>
                 <input type="checkbox" name="" id="">
             </div>
           

@@ -33,15 +33,16 @@ class UserIngredientsController < ApplicationController
     if UserIngredient.find_by(ingredient_id: ingredient.id).nil?
       
       # //! Proportion.where(ingredient_id: 1865, recipe_id:1236).group(:ingredient).sum(:amount) group by ingredients
-      sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
-      #amount = convert_to_gram(ingredient, recipe)
-      user_ingredient = UserIngredient.create(status: false, quantity: sum_amounts, user: current_user, ingredient: ingredient)
+      #amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+     
+      amount = convert_to_gram(ingredient, recipe)
+      user_ingredient = UserIngredient.create(status: false, quantity: amount, user: current_user, ingredient: ingredient)
     else
-      sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
-      #amount = convert_to_gram(ingredient, recipe)
+      # amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+      amount = convert_to_gram(ingredient, recipe)
       user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id)
      # //! ISSUE : This add an amount each time I go to the shopping list and shopping list is slow.
-      user_ingredient.update(quantity: user_ingredient.quantity.to_f + sum_amounts ) #//? maybe change quantity to a float
+      user_ingredient.update(quantity: user_ingredient.quantity.to_f + amount ) #//? maybe change quantity to a float
     end   
   end
 
