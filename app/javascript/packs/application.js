@@ -30,6 +30,7 @@ import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarA
 import { addDiet } from './add_diet';
 import { addNumberOfPeople } from './add_number_of_people';
 import { initSaveMenu } from "./saveMenu";
+import { loadingScreenTyped } from '../components/loadingScreen';
 
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
@@ -46,8 +47,8 @@ document.addEventListener('turbolinks:load', () => {
   initSaveMenu();
   // addIngredientsDisliked();
   // addIngredientsWanted();
-
+  loadingScreenTyped();
   // initSelect2();
 });
 
-import "controllers"
+import "controllers";
