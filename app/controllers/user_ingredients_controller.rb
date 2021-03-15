@@ -1,7 +1,7 @@
 class UserIngredientsController < ApplicationController
-  
+   require 'open-uri'
+   require 'json'
    # TO DELET LOOK AT PUNDIT SCOPE
-  skip_after_action :verify_authorized
 
   def index
     @menu = current_user.menus.empty? ? create_menu : current_user.menus.last #//? maybe check if it's the same menu than session
@@ -33,14 +33,16 @@ class UserIngredientsController < ApplicationController
     if UserIngredient.find_by(ingredient_id: ingredient.id).nil?
       
       # //! Proportion.where(ingredient_id: 1865, recipe_id:1236).group(:ingredient).sum(:amount) group by ingredients
-      sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
-      user_ingredient = UserIngredient.create(status: false, quantity: sum_amounts, user: current_user, ingredient: ingredient)
+      #amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+     
+      amount = convert_to_gram(ingredient, recipe)
+      user_ingredient = UserIngredient.create(status: false, quantity: amount, user: current_user, ingredient: ingredient)
     else
-      sum_amounts = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+      # amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+      amount = convert_to_gram(ingredient, recipe)
       user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id)
      # //! ISSUE : This add an amount each time I go to the shopping list and shopping list is slow.
-      user_ingredient.update(quantity: user_ingredient.quantity.to_f + sum_amounts ) #//? maybe change quantity to a float
-    
+      user_ingredient.update(quantity: user_ingredient.quantity.to_f + amount ) #//? maybe change quantity to a float
     end   
   end
 
@@ -48,6 +50,19 @@ class UserIngredientsController < ApplicationController
     #//! here check if doubles
       # join doubles ingredient
     # return a list of ingredients with their amount and unit
+  end
+
+  def convert_to_gram(ingredient, recipe)
+    proportions = Proportion.where(ingredient:ingredient, recipe: recipe)
+    amount = []
+    proportions.each do |proportion| 
+      url = "https://api.spoonacular.com/recipes/convert?apiKey=#{ENV['SPOONACULAR_KEY']}&ingredientName=#{ingredient.name}&sourceAmount=#{proportion.amount}&sourceUnit=#{proportion.unit}&targetUnit=grams"
+      serialized_conversion = open(url).read
+      conversion = JSON.parse(serialized_conversion)
+      amount << conversion['targetAmount'].to_f
+    end
+    amount.inject(0){|sum,x| sum + x }
+    # retrun amount in gram
   end
 
   def create_menu
