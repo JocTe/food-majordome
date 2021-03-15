@@ -1,16 +1,12 @@
 import { fetchWithToken } from "../utils/fetch_with_token";
 
-const selectElement = document.querySelector('.number_people');
-const url = "/preferences";
-
-
-  const fetchNumberOfPerson = (event) => {
-    event.preventDefault();
-    console.log(event.currentTarget.value);
+  const fetchNumberOfPerson = (event) => {    
+    const url = "/preferences";
+    event.preventDefault();    
 
     const people_number = event.currentTarget.value
     const body = {
-        preferences: { number_of_people: people_number }
+      preferences: { number_of_people: people_number }
     }
 
     fetchWithToken(url, {
@@ -26,13 +22,14 @@ const url = "/preferences";
     //    console.log(data);
     // });
   };
-
+  
 
   const addNumberOfPeople = () => {
-    if (selectElement) {
+    const selectElement = document.getElementById('nb_people');    
+    if (selectElement) {      
       selectElement.addEventListener('change', fetchNumberOfPerson);
     }
   };
 
-
 export { addNumberOfPeople }
+
