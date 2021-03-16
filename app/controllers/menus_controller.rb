@@ -13,19 +13,19 @@ class MenusController < ApplicationController
 
     case session["preferences"]
       when preferences["vegan"] = true && preferences["gluten_free"] = true && preferences["dairy_free"] = true
-        possible_recipes << Recipe.where(vegan: true, gluten_free: true, dairy_free: true)
+        possible_recipes << Recipe.where(vegan: true, gluten_free: true, dairy_free: true, vegetarian: true)
       when preferences["vegetarian"] = true && preferences["gluten_free"] = true && preferences["dairy_free"] = true
         possible_recipes << Recipe.where(vegetarian: true, gluten_free: true, dairy_free: true)
       when preferences["vegan"] = true && preferences["gluten_free"] = true
-        possible_recipes << Recipe.where(vegan: true, gluten_free: true)
+        possible_recipes << Recipe.where(vegan: true, gluten_free: true, vegetarian: true)
       when preferences["vegan"] = true && preferences["dairy_free"] = true
-        possible_recipes << Recipe.where(vegan: true, dairy_free: true)
+        possible_recipes << Recipe.where(vegan: true, dairy_free: true, vegetarian: true)
       when preferences["vegetarian"] = true && preferences["gluten_free"] = true
         possible_recipes << Recipe.where(vegetarian: true, gluten_free: true)
       when preferences["vegetarian"] = true && preferences["dairy_free"] = true
         possible_recipes << Recipe.where(vegetarian: true, dairy_free: true)
       when preferences["vegan"] = true
-        possible_recipes << Recipe.where(vegan: true)
+        possible_recipes << Recipe.where(vegan: true, vegetarian: true)
       when preferences["vegetarian"] = true
         possible_recipes << Recipe.where(vegetarian: true)
       when preferences["gluten_free"] = true && preferences["dairy_free"] = true
@@ -33,7 +33,7 @@ class MenusController < ApplicationController
       when preferences["gluten_free"] = true
         possible_recipes << Recipe.where(gluten_free: true)
       when preferences["dairy_free"] = true
-        possible_recipes << Recipe.where(dairy_free: true)      
+        possible_recipes << Recipe.where(dairy_free: true)
       else
        possible_recipes << Recipe.all
     end
