@@ -10,14 +10,20 @@ class MenusController < ApplicationController
     preferences = session["preferences"]
     if preferences["vegan"]
       preferences["vegetarian"] = true
-      preferences["dairy_free"] = true
-      preferences["gluten_free"] = true
+      preferences["dairy_free"] = true      
+    end    
+
+    matching_recipes = Recipe.where(dairy_free: preferences["dairy_free"],
+      vegetarian: preferences["vegetarian"], gluten_free: preferences["gluten_free"])
+    
+    recipes_by_name = matching_recipes.group_by { |recipe| recipe.name }
+
+    uniq_recipes_selection = []
+    recipes_by_name.each_value do |value|
+      uniq_recipes_selection << value[0]
     end
 
-    selected_recipes = Recipe.where(dairy_free: preferences["dairy_free"], vegan: preferences["vegan"],
-      vegetarian: preferences["vegetarian"], gluten_free: preferences["gluten_free"])
-
-    @suggestions = selected_recipes.sample(5)
+    @suggestions = uniq_recipes_selection.sample(5)
 
     authorize @menu
   end
