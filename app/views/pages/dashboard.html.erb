@@ -14,15 +14,17 @@
             </div>
 
           <div class="col">
-            <% @menuplans.each do |d| %>
-              <%if d.date == Date.today %>
-                <%= link_to instructions_recipe_path(d.recipe_id) do  %>
-              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
-                <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
-                <p class="mb-0">Cooking instructions</p>
-              </div>
-                <% end %>
-              <% end  %>
+            <% unless @menuplans.nil? %>
+              <% @menuplans.each do |d| %>
+                <%if d.date == Date.today %>
+                  <%= link_to instructions_recipe_path(d.recipe_id) do  %>
+                <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                  <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
+                  <p class="mb-0">Cooking instructions</p>
+                </div>
+                  <% end %>
+                <% end  %>
+              <% end %>
             <% end %>
           </div>
         </div>

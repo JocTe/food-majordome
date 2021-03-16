@@ -7,8 +7,10 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @menu = Menu.last
-    authorize @menu
-    @menuplans = @menu.menu_plans
+    unless @menu.nil?
+      authorize @menu
+      @menuplans = @menu.menu_plans
+    end 
   end
 
   def preferences
