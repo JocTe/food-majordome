@@ -15,7 +15,7 @@ export default class extends Controller {
 
     next() {
         this.index += 1
-        const button = document.querySelector(".save-btn-menu");
+        const button = document.getElementById("button-save-to-hide");
         button.classList.toggle("hide");
     }
 
