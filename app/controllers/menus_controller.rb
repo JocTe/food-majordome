@@ -7,16 +7,38 @@ class MenusController < ApplicationController
   def new
     # policy_scope(Recipe)
     @menu = Menu.new
-    preferences = session["preferences"]
-    if preferences["vegan"]
-      preferences["vegetarian"] = true
-      preferences["dairy_free"] = true      
-    end    
-
-    matching_recipes = Recipe.where(dairy_free: preferences["dairy_free"],
-      vegetarian: preferences["vegetarian"], gluten_free: preferences["gluten_free"])
     
-    recipes_by_name = matching_recipes.group_by { |recipe| recipe.name }
+    preferences = session["preferences"]
+    possible_recipes = []
+
+    case session["preferences"]
+      when preferences["vegan"] = true && preferences["gluten_free"] = true && preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(vegan: true, gluten_free: true, dairy_free: true)
+      when preferences["vegetarian"] = true && preferences["gluten_free"] = true && preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(vegetarian: true, gluten_free: true, dairy_free: true)
+      when preferences["vegan"] = true && preferences["gluten_free"] = true
+        possible_recipes << Recipe.where(vegan: true, gluten_free: true)
+      when preferences["vegan"] = true && preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(vegan: true, dairy_free: true)
+      when preferences["vegetarian"] = true && preferences["gluten_free"] = true
+        possible_recipes << Recipe.where(vegetarian: true, gluten_free: true)
+      when preferences["vegetarian"] = true && preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(vegetarian: true, dairy_free: true)
+      when preferences["vegan"] = true
+        possible_recipes << Recipe.where(vegan: true)
+      when preferences["vegetarian"] = true
+        possible_recipes << Recipe.where(vegetarian: true)
+      when preferences["gluten_free"] = true && preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(gluten_free: true, dairy_free: true)
+      when preferences["gluten_free"] = true
+        possible_recipes << Recipe.where(gluten_free: true)
+      when preferences["dairy_free"] = true
+        possible_recipes << Recipe.where(dairy_free: true)      
+      else
+       possible_recipes << Recipe.all
+    end
+    
+    recipes_by_name = possible_recipes.flatten.group_by { |recipe| recipe.name }
 
     uniq_recipes_selection = []
     recipes_by_name.each_value do |value|
