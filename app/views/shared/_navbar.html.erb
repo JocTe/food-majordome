@@ -9,7 +9,11 @@
     <% end %>
     </li>
     <li class="navigation-item">
-      <a href="" class="navigation-link"><i class="far fa-calendar-alt navigation-icon"></i><span class="navigation-text">Menu</span></a>
+    <% if current_page?(menu_path) %>
+      <a href="<%= menu_path %>" class="navigation-link active"><i class="far fa-calendar-alt navigation-icon"></i><span class="navigation-text">Menu</span></a>
+    <% else %>
+      <a href="<%= menu_path %>" class="navigation-link"><i class="far fa-calendar-alt navigation-icon"></i><span class="navigation-text">Menu</span></a>
+    <% end %>
     </li>
     <li class="navigation-item">
       <%= link_to destroy_user_session_path, method: :delete, class: "navigation-link" do %>
