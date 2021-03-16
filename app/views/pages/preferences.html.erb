@@ -1,12 +1,12 @@
-<%= render "shared/header", text: "Tell us more about you:" %>  
+<%= render "shared/header", text: "Tell us more about you" %>  
 
 <div class="container">
  
   <div class="question" data-controller="question" data-question-index="0">
     <div class="questionitem current" data-question-target="questionitem">
-      <h3 class="mb-3">How many are you at home?</h3>
+      <h3 class="mb-4">How many are you at home?</h3>
       <!-- <input type="number" id="number_people"> -->  
-      <select class="number_people mb-5" name="ice-cream" id="nb_people">
+      <select class="number_people mb-5 select-border-boootom" name="ice-cream" id="nb_people">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -16,12 +16,15 @@
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-      </select>        
-      <button class="btn btn-secondary button_rouded" data-action="click->question#next">Next</button>
+      </select>
+
+      <div class="btn-background-white">
+        <button class="btn btn-secondary btn-block button-radius" data-action="click->question#next">Next</button>
+      </div>      
     </div>
 
     <div class="questionitem" data-question-target="questionitem">
-        <h3>Your diet:</h3>
+        <h3>Your diet</h3>
         <div class="container">
         <div class="row">
           <div class="col">
@@ -65,9 +68,12 @@
             </div>      
           </div>          
         </div>
-        <%= render "shared/large_btn", text: "Validate", path: new_menu_path %>
-    </div>
 
+        <div class="btn-background-white">
+          <a class="btn btn-secondary btn-block button-radius" href="<%= new_menu_path %>">Validate</a>
+        </div> 
+        
+    </div>
   </div>  
   
   <!-- Activate this code when we have the ingredients data. Complite the JS code then.

@@ -1,0 +1,13 @@
+.select-border-boootom{
+  padding: 16px 100px;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  background-color: $my-white;
+  border-bottom-color: $my-grey;
+  border-width: 2px;
+  font-size: 22px;
+  &:focus{
+    outline: none;
+  }
+}
