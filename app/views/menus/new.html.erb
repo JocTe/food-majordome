@@ -4,24 +4,35 @@
 
   <div class="hide show" data-suggestion-target="screen">
     <div class="wrapper-margin-bottom-small">
-      <div class="menu-cards-list mt-4">
+      <!-- <div class="menu-cards-list mt-4">
         <% @suggestions.each_with_index do |suggestion, index| %>
           <% date = Date.today + index %>
             <h3 id="recipe-for-date" ><%= date.strftime("%A %d, %B")%></h3>
           <%= render  "shared/menu_cards", recipe: suggestion, date: date %>
         <% end %>
+      </div> -->
+
+
+    <div class="swipe-box">
+      <% @suggestions.each do |suggestion| %>
+      <div class="test-swipe">
+        <img src="<%= suggestion.image %>" alt="">
+        <h3> <%= suggestion.name.truncate(40) %> </h3>
+        <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
       </div>
+      <% end %>
+    </div>
+
+    <div class="swipe-box">
+      <% @suggestions.each do |suggestion| %>
+      <div class="test-swipe">
+        <img src="<%= suggestion.image %>" alt="">
+        <h3> <%= suggestion.name.truncate(20) %> </h3>
+      </div>
+      <% end %>
     </div>
   </div>
-
-  <div class="swipe-box">
-    <% @suggestions.each do |suggestion| %>
-    <div class="test-swipe">
-      <img id="image" src="<%= suggestion.image %>" alt="">
-    </div>
-    <% end %>
-  </div>
-
+</div>
 
   <div class="loading-screen hide" data-suggestion-target="screen">
       <h3 class="loading-screen-typed" id="loading-title"></h3>
