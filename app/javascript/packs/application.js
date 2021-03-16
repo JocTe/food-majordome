@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -31,6 +30,7 @@ import { addDiet } from './add_diet';
 import { addNumberOfPeople } from './add_number_of_people';
 import { initSaveMenu } from "./saveMenu";
 import { loadingScreenTyped } from '../components/loadingScreen';
+import { Carousel } from '../components/carousel';
 
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
@@ -43,12 +43,13 @@ document.addEventListener('turbolinks:load', () => {
   addNumberOfPeople();
   addDiet();
   initNavbarOnSelection();
-  initNavbarOnScroll();  
+  initNavbarOnScroll();
   initSaveMenu();
   // addIngredientsDisliked();
   // addIngredientsWanted();
   loadingScreenTyped();
   // initSelect2();
+  // appeler Class Carousel ???
 });
 
 import "controllers";
