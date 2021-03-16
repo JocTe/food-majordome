@@ -87,6 +87,7 @@ class Carousel {
 
     // get ratio between swiped pixels and X axis
     let propX = e.deltaX / document.querySelector('.swipe-box').clientWidth
+    let propY = e.deltaY / document.querySelector('.swipe-box').clientHeight
 
     // get swipe direction, left (-1) or right (1)
     let dirX = e.deltaX < 0 ? -1 : 1
