@@ -19,7 +19,7 @@ class Carousel {
   handle() {
 
     // list all cards
-    this.cards = this.board.querySelectorAll('.test-swipe')
+    this.cards = this.board.querySelectorAll('.swipe-card')
 
     // get top card
     this.topCard = this.cards[this.cards.length-1]
@@ -170,7 +170,7 @@ class Carousel {
 
    // push() {
    //  let card = document.createElement('div')
-   //  card.classList.add('test-swipe')
+   //  card.classList.add('swipe-card')
    //  card.style.backgroundImage =
    //      "url('https://picsum.photos/320/320/?random=" + Math.round(Math.random() * 1000000) + "')"
    //  this.board.insertBefore(card, this.board.firstChild)

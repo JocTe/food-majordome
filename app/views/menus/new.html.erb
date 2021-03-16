@@ -13,23 +13,66 @@
       </div> -->
 
 
-    <div class="swipe-box">
-      <% @suggestions.each do |suggestion| %>
-      <div class="test-swipe">
-        <img src="<%= suggestion.image %>" alt="">
-        <h3> <%= suggestion.name.truncate(40) %> </h3>
-        <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+      <div class="swipe-box">
+        <% @suggestions.each do |suggestion| %>
+          <div class="swipe-card">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+            <h3> <%= suggestion.name.truncate(40) %> </h3>
+            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+          </div>
+          <% end %>
+        <% end %>
       </div>
-      <% end %>
-    </div>
 
-    <div class="swipe-box">
-      <% @suggestions.each do |suggestion| %>
-      <div class="test-swipe">
-        <img src="<%= suggestion.image %>" alt="">
-        <h3> <%= suggestion.name.truncate(20) %> </h3>
+      <div class="swipe-box">
+        <% @suggestions.each do |suggestion| %>
+          <div class="swipe-card">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+            <h3> <%= suggestion.name.truncate(40) %> </h3>
+            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+          </div>
+          <% end %>
+        <% end %>
       </div>
-      <% end %>
+
+      <div class="swipe-box">
+        <% @suggestions.each do |suggestion| %>
+          <div class="swipe-card">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+            <h3> <%= suggestion.name.truncate(40) %> </h3>
+            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="swipe-box">
+        <% @suggestions.each do |suggestion| %>
+          <div class="swipe-card">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+            <h3> <%= suggestion.name.truncate(40) %> </h3>
+            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="swipe-box">
+        <% @suggestions.each do |suggestion| %>
+          <div class="swipe-card">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+            <h3> <%= suggestion.name.truncate(40) %> </h3>
+            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
@@ -42,4 +85,4 @@
   </div>
 </div>
 
-<%= console %>
+

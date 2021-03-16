@@ -4,11 +4,10 @@
   position: relative;
   overflow: hidden;
   background-color: $my-white2;
-
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
-.test-swipe {
+.swipe-card {
   width: 330px;
   height: 310px;
   position: absolute;
@@ -32,6 +31,11 @@
   }
 
   p{
+  pointer-events: none;
   padding-left: 15px;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
