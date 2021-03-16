@@ -14,8 +14,10 @@ class MenusController < ApplicationController
       preferences["gluten_free"] = true
     end
 
-    @suggestions = Recipe.where(dairy_free: preferences["dairy_free"], vegan: preferences["vegan"],
-      vegetarian: preferences["vegetarian"], gluten_free: preferences["gluten_free"]).sample(5) # where preferences match get last 5
+    selected_recipes = Recipe.where(dairy_free: preferences["dairy_free"], vegan: preferences["vegan"],
+      vegetarian: preferences["vegetarian"], gluten_free: preferences["gluten_free"])
+
+    @suggestions = selected_recipes.sample(5)
 
     authorize @menu
   end
