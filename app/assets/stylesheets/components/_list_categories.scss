@@ -1,0 +1,13 @@
+.categories-shopping{
+    
+    &-list{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+        li{
+            padding-left: 10px;
+            display: inline;
+        }
+    }
+}
