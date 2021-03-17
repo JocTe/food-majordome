@@ -1,20 +1,29 @@
-.categories-shopping{
-    text-align: center;
-    padding: 10px;
+.menu-categories {
+    display: flex;
     background-color: white;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 50%;
-    white-space: nowrap;
-    overflow-x: auto;
     width: 100%;
+    justify-content: center;
+    &.sticky{
+        position: fixed;
+        top: 0;
+        z-index: 3;
+    }
+}
 
+.categories-shopping{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
     &-list{
-        
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
         list-style-type: none;
+        padding: 0 5px;
         margin: 0;
-        padding: 0;
-        font-size: 20px;
+        white-space: nowrap;
         &-item{
+            text-align: center;
+            width: 33%;
             scroll-snap-align: center;
             display: inline-block;
             margin-top: 5px;
@@ -23,11 +32,7 @@
         }
     }
 
-    &.sticky{
-        position: fixed;
-        top: 0;
-        z-index: 3;
-    }
+    
 }
 .sticky + .container {
     padding-top: 60px;
