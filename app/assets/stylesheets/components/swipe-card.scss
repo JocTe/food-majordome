@@ -1,15 +1,14 @@
 .swipe-box {
   width: 400px;
-  height: 300px;
+  height: 330px;
   position: relative;
   overflow: hidden;
-  background-color: $my-white2;
   margin-top: 15px;
 }
 
 .swipe-card {
   width: 330px;
-  height: 310px;
+  height: 330px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,8 +24,8 @@
 
   h3 {
   pointer-events: none;
-  font-size: 16px;
-  padding-top: 5px;
+  font-size: 20px;
+  padding-top: 10px;
   padding-left: 10px;
   }
 

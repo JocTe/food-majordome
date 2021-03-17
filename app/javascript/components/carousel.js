@@ -1,5 +1,9 @@
 import * as Hammer from "hammerjs";
 
+
+// bundle & yarn add pour Morgane & Jordane
+// solution pour loop => actuellement conserve la last card
+
 class Carousel {
 
   constructor(element) {
@@ -10,10 +14,10 @@ class Carousel {
     // this.push()
     // this.push()
 
+
     // handle gestures
     this.handle()
   }
-
 
 
   handle() {
@@ -23,13 +27,13 @@ class Carousel {
 
     // get top card
     this.topCard = this.cards[this.cards.length-1]
-    this.topCard.classList.add('active')
+    this.topCard.classList.add('menu-active')
 
     // get next card
     this.nextCard = this.cards[this.cards.length - 2]
 
-     // if at least one card is present
-    if (this.cards.length > 0) {
+     // garde la last card actuellement
+    if (this.cards.length > 1) {
 
     // set default top card position and scale
     this.topCard.style.transform =
@@ -150,7 +154,7 @@ class Carousel {
       // wait transition end
       setTimeout(() => {
       // remove swiped card
-      document.querySelector('.swipe-box').removeChild(e.target)
+      this.board.removeChild(e.target)
       // add new card
       // this.push()
       // handle gestures on new top card
@@ -177,10 +181,16 @@ class Carousel {
   // }
 }
 
+const initCarousel = (() => {
+  let boards = document.querySelectorAll('.swipe-box')
+  if (boards) {
+    boards.forEach((board) => {
+      new Carousel(board);
+    });
+  }
+})
 
+// board.forEach(let carousel = new Carousel(board))
+// let carousel = new Carousel(board)
 
-let board = document.querySelector('.swipe-box')
-
-let carousel = new Carousel(board)
-
-export { Carousel };
+export { initCarousel };

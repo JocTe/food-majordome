@@ -5,7 +5,7 @@ const initSaveMenu = () => {
 
     const save = (event) => {
         event.preventDefault();
-        const recipes = document.querySelectorAll(".menu-card");
+        const recipes = document.querySelectorAll(".menu-active");
         const body = {};
         const recipes_data = {};
         recipes_data["recipes_data"] = []

@@ -1,90 +1,33 @@
 <%= render "shared/header", text: "Your week menu" %>
 
 <div class="container" data-controller="suggestion" data-suggestion-index="0">
-
   <div class="hide show" data-suggestion-target="screen">
     <div class="wrapper-margin-bottom-small">
-      <!-- <div class="menu-cards-list mt-4">
-        <% @suggestions.each_with_index do |suggestion, index| %>
-          <% date = Date.today + index %>
-            <h3 id="recipe-for-date" ><%= date.strftime("%A %d, %B")%></h3>
-          <%= render  "shared/menu_cards", recipe: suggestion, date: date %>
-        <% end %>
-      </div> -->
 
-
-      <div class="swipe-box">
-        <% @suggestions.each do |suggestion| %>
-          <div class="swipe-card">
-            <img src="<%= suggestion.image %>" alt="">
-            <%= link_to recipe_path(suggestion) do %>
-            <h3> <%= suggestion.name.truncate(40) %> </h3>
-            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="swipe-box">
-        <% @suggestions.each do |suggestion| %>
-          <div class="swipe-card">
-            <img src="<%= suggestion.image %>" alt="">
-            <%= link_to recipe_path(suggestion) do %>
-            <h3> <%= suggestion.name.truncate(40) %> </h3>
-            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="swipe-box">
-        <% @suggestions.each do |suggestion| %>
-          <div class="swipe-card">
-            <img src="<%= suggestion.image %>" alt="">
-            <%= link_to recipe_path(suggestion) do %>
-            <h3> <%= suggestion.name.truncate(40) %> </h3>
-            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="swipe-box">
-        <% @suggestions.each do |suggestion| %>
-          <div class="swipe-card">
-            <img src="<%= suggestion.image %>" alt="">
-            <%= link_to recipe_path(suggestion) do %>
-            <h3> <%= suggestion.name.truncate(40) %> </h3>
-            <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-
+      <% 5.times do |index| %>
+        <% date = Date.today + index %>
+        <h3><%= date.strftime("%A %d, %B")%></h3>
         <div class="swipe-box">
-          <% @suggestions.each do |suggestion| %>
-            <div class="swipe-card">
-              <img src="<%= suggestion.image %>" alt="">
-              <%= link_to recipe_path(suggestion) do %>
-              <h3> <%= suggestion.name.truncate(40) %> </h3>
-              <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-hourglass"></i> <%= suggestion.prep_time.to_i %> minutes </p>
-            </div>
+          <% @suggestions[index].each do |suggestion| %>
+          <div class="swipe-card" data-recipe-id=" <%= suggestion.id %> " data-recipe-date=" <%= date %> ">
+            <img src="<%= suggestion.image %>" alt="">
+            <%= link_to recipe_path(suggestion) do %>
+              <h3> <%= suggestion.name.truncate(33) %> </h3>
+              <p><i class="fas fa-fire-alt"></i> <%= suggestion.calories.round %> calories <i class="far fa-clock text-primary"></i> <%= suggestion.prep_time.to_i %> minutes </p>
             <% end %>
+          </div>
           <% end %>
         </div>
-
-      </div>
+      <% end %>
     </div>
   </div>
 
   <div class="loading-screen hide" data-suggestion-target="screen">
-      <h3 class="loading-screen-typed" id="loading-title"></h3>
-      <div class="spinner-grow text-warning" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+    <h3 class="loading-screen-typed" id="loading-title"></h3>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
-</div>
-
 
   <div class = "btn-background-white" data-action="click->suggestion#next" id="button-save-to-hide">
     <%= render  "shared/large_btn", text: "Valide my menu", identifier: "save-btn-menu", remote: true %>
