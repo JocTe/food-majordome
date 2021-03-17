@@ -1,5 +1,9 @@
 <%= render "shared/header", text: "Your week menu" %>
 
+<div class="swipe-annotation">
+  <h4>Swipe <i class="fas fa-arrow-left"></i> or <i class="fas fa-arrow-up"></i> to change your daily menu</h4>
+</div>
+
 <div class="container" data-controller="suggestion" data-suggestion-index="0">
   <div class="hide show" data-suggestion-target="screen">
     <div class="wrapper-margin-bottom-small">
@@ -12,7 +16,7 @@
           <div class="swipe-card" data-recipe-id=" <%= suggestion.id %> " data-recipe-date=" <%= date %> ">
             <img src="<%= suggestion.image %>" alt="">
             <%= link_to recipe_path(suggestion) do %>
-              <h3> <%= suggestion.name.truncate(32) %> </h3>
+              <h3> <%= suggestion.name.truncate(25) %> </h3>
               <div class="suggestion-information">
                 <p><i class="fas fa-fire-alt text-primary"></i> <%= suggestion.calories.round %> calories  </p>
                 <p><i class="far fa-clock text-primary"></i> <%= suggestion.prep_time.to_i %> minutes </p>
