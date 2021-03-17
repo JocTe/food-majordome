@@ -1,20 +1,49 @@
-.shopping-card {
-    margin-top: 10px;
-    padding: 0;
-    
+.shopping-card {    
+    position: relative;
     display: flex;
- 
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 0;
     background-color: white;
-    &-img {
-        width: 70px;
-        height: 70px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
+    border-radius: 20px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow:0 5px 20px rgba(0, 0, 0, 0.05);
+
+
+    &.task-done{
+    
+    border: 2px solid $primary;
+
+  }
+    &:hover {
+        color: inherit;
     }
-    & p, input {
+    &-img {
+     
+      max-height: 100px;
+      margin-bottom: 10px;
+    }
+    & p {
         margin: 0;
-       align-self: center;
+        text-align: center;
+    }
+    & input[type="checkbox"] {
+        border-radius: 50%;
+        border: 1px solid $secondary;
+        width: 1.3em;
+        height: 1.3em;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        position: absolute;
+        top: 15px;
+        right: 10px;
+     
+
+        &:checked{
+            border: 1px solid $primary;
+            background-color: $primary;
+        }
     }
 }

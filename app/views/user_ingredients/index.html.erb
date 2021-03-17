@@ -1,11 +1,26 @@
-<div class="container">
+<div class="categories-shopping sticky">
+        <ul class="categories-shopping-list">
+            <li class="categories-shopping-list-item">All</li>
+            <li class="categories-shopping-list-item current-category">Fruits & Vegetables</li>
+            <li class="categories-shopping-list-item">Dairy</li>
+            <li class="categories-shopping-list-item">Grocery</li>
+            <li class="categories-shopping-list-item">Meat</li>
+            <li class="categories-shopping-list-item">Seafood</li>
+            <li class="categories-shopping-list-item">Other</li>
+        </ul>
+    </div>
+<div class="container" data-controller="shopping">
+  
     <div class="row">
   
         <% @user_ingredients.each do |task| %>
-            <div class="col-sm-12 shopping-card">
-                <div class="shopping-card-img" style="background-image:url(https://spoonacular.com/cdn/ingredients_100x100/<%=task.ingredient.image%>);"></div>
-                <p><%= task.ingredient.name %> - <%= task.quantity %></p>
-                <input type="checkbox" name="" id="">
+            <div class="col-6 mt-3">
+                <a class="shopping-card" data-shopping-target="card" data-action="click->shopping#toggleState">
+                <%= image_tag(task.ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{task.ingredient.image}") : image_path("groceries.svg"), class: "shopping-card-img") %>
+                    <p><%= task.ingredient.name %></p>
+                    <p><%= (task.quantity.to_f * current_user.number_of_people).round(2) %> grams</p>
+                    <input type="checkbox" name="" class="shopping-card-check">
+                </a>
             </div>
           
           <% end %>
