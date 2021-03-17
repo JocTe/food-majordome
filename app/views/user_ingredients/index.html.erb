@@ -10,11 +10,9 @@
      </div>
 </div>
 <div class="container" data-controller="shopping">
-  
     <div class="row">
-  
         <% @user_ingredients.each do |task| %>
-            <div class="col-6 mt-3" data-item-category = "<%= task.ingredient.category %>">
+            <div class="col-6 mt-3 ingredient-shopping" data-item-category = "<%= task.ingredient.category %>">
                 <a class="shopping-card" data-shopping-target="card" data-action="click->shopping#toggleState">
                 <%= image_tag(task.ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{task.ingredient.image}") : image_path("groceries.svg"), class: "shopping-card-img") %>
                     <p><%= task.ingredient.name %></p>
