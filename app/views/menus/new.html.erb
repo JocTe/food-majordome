@@ -1,12 +1,11 @@
 <%= render "shared/header", text: "Your week menu" %>
 
-<div class="swipe-annotation">
-  <h4>Swipe <i class="fas fa-arrow-left"></i> or <i class="fas fa-arrow-up"></i> to change your daily menu</h4>
-</div>
-
 <div class="container" data-controller="suggestion" data-suggestion-index="0">
   <div class="hide show" data-suggestion-target="screen">
     <div class="wrapper-margin-bottom-small">
+      <div class="swipe-annotation">
+        <h4>Swipe <i class="fas fa-arrow-left"></i> or <i class="fas fa-arrow-up"></i> to change your daily menu</h4>
+      </div>
 
       <% 5.times do |index| %>
         <% date = Date.today + index %>
