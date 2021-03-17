@@ -1,13 +1,3 @@
-.categories-shopping {
-    scroll-snap-type: x mandatory;
-
-    
-    scroll-padding: 50%;
-    &-list {
-        scroll-snap-align: center;
-    }
-}
-
 .shopping-card {    
     position: relative;
     display: flex;
