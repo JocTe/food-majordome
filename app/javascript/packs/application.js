@@ -31,7 +31,7 @@ import { addNumberOfPeople } from './add_number_of_people';
 import { initSaveMenu } from "./saveMenu";
 import { loadingScreenTyped } from '../components/loadingScreen';
 import { Carousel } from '../components/carousel';
-
+import { initNavCategories } from '../components/navCategories';
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
 
@@ -48,6 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   // addIngredientsDisliked();
   // addIngredientsWanted();
   loadingScreenTyped();
+  //initNavCategories();
   // initSelect2();
   // appeler Class Carousel ???
 });
