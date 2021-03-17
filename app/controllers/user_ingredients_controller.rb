@@ -9,7 +9,7 @@ class UserIngredientsController < ApplicationController
     # //? How should I work it here - There is multipe proportion for one ingredient
     # //? Also how do I take the unit should I make a request call to the api to convert them?
     # //? GET https://api.spoonacular.com/recipes/{id}/ingredientWidget.json
-    if UserIngredient.count == 0 # //* This check if the shopping list is empty - The menu don't change now, because I need to destroy the shopping list when a new menu is made
+    if current_user.user_ingredients.count == 0 # //* This check if the shopping list is empty - The menu don't change now, because I need to destroy the shopping list when a new menu is made
       @menu.recipes.each do |recipe|
         recipe.ingredients.each do |ingredient|
       # //! ITERATE ON THE PROPORTIONS INSTEAD OF INGREDIENT, THEN ADD INGREDIENTS TOGETHER, THEN COMBINE EVERY INGREDIents
@@ -19,7 +19,7 @@ class UserIngredientsController < ApplicationController
       end
     end
 
-    @user_ingredients = policy_scope(UserIngredient) # //TODO CHANGE CHECK POLICYSCOPE
+    @user_ingredients = policy_scope(current_user.user_ingredients) # //TODO CHANGE CHECK POLICYSCOPE
     
     # @ingredients = UserIngredient.all
   end
@@ -36,7 +36,7 @@ class UserIngredientsController < ApplicationController
   # //! SHould only be called once by menu
   def create_user_ingredients(ingredient, recipe)
 
-    if UserIngredient.find_by(ingredient_id: ingredient.id).nil?
+    if UserIngredient.find_by(ingredient_id: ingredient.id, user_id: current_user.id).nil?
       
       # //! Proportion.where(ingredient_id: 1865, recipe_id:1236).group(:ingredient).sum(:amount) group by ingredients
       #amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
@@ -46,7 +46,7 @@ class UserIngredientsController < ApplicationController
     else
       # amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
       amount = convert_to_gram(ingredient, recipe)
-      user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id)
+      user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id, user_id: current_user.id)
      # //! ISSUE : This add an amount each time I go to the shopping list and shopping list is slow.
       user_ingredient.update(quantity: user_ingredient.quantity.to_f + amount ) #//? maybe change quantity to a float
     end   

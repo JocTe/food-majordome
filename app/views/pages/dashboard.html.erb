@@ -1,8 +1,7 @@
 <%= render "shared/header", text:'Hello ' + current_user.username %>
 
-<div class="container">
+<div class="container mt-5">
   <div class="dashboard">
-      <div class="container" id="icons">
         <div class="row">
             <div class="col">
               <a href="<%= menu_path %>" >
@@ -12,7 +11,6 @@
                 </div>
               </a>
             </div>
-
           <div class="col">
             <% unless @menuplans.nil? %>
               <% @menuplans.each do |d| %>
@@ -47,15 +45,15 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col-6">
             <a href="https://media.giphy.com/media/LZElUsjl1Bu6c/giphy.gif" >
               <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
-                <%= image_tag("dashboard_icons/gift.svg", :alt => "surprise") %>
+                <%= image_tag("dashboard_icons/gift-box.svg", :alt => "surprise") %>
                 <p class="mb-0">Chef's surprise</p>
               </div>
             </a>
           </div>
-        </div>
+
     </div>
 </div>
 
