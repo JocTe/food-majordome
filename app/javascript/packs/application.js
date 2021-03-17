@@ -33,6 +33,7 @@ import { initSaveMenu } from "./saveMenu";
 import { loadingScreenTyped } from '../components/loadingScreen';
 import { initCarousel } from '../components/carousel';
 import { initNavCategories } from '../components/navCategories';
+import { initMenuShowCarousel } from '../components/menuShowCarousel';
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
 // import { initSelect2 } from '../components/init_select2';
@@ -45,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   initNavbarOnSelection();
   initNavbarOnScroll();
   initSaveMenu();
+  initMenuShowCarousel();
   // addIngredientsDisliked();
   // addIngredientsWanted();
   loadingScreenTyped();
