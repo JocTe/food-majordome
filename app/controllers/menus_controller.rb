@@ -7,7 +7,7 @@ class MenusController < ApplicationController
   def new
     # policy_scope(Recipe)
     @menu = Menu.new
-    
+
     preferences = session["preferences"]
     possible_recipes = []
 
@@ -37,7 +37,7 @@ class MenusController < ApplicationController
       else
        possible_recipes << Recipe.all
     end
-    
+
     recipes_by_name = possible_recipes.flatten.group_by { |recipe| recipe.name }
 
     uniq_recipes_selection = []
@@ -45,7 +45,8 @@ class MenusController < ApplicationController
       uniq_recipes_selection << value[0]
     end
 
-    @suggestions = uniq_recipes_selection.sample(5)
+    result = uniq_recipes_selection.sample(20)
+    @suggestions = result.each_slice(4).to_a
 
     authorize @menu
   end

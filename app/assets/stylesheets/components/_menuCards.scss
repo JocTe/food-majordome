@@ -14,14 +14,16 @@ h3#recipe-for-date{
     display: flex;
     height: 90px;
     position: relative;
-   
+
+
+
   &-img{
     height: 100%;
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
   }
 
-  &-content{ 
+  &-content{
     width: 100%;
     margin-left: -15px;
     padding-left: 15px;
