@@ -2,7 +2,6 @@ import * as Hammer from "hammerjs";
 
 
 // bundle & yarn add pour Morgane & Jordane
-// solution pour loop => actuellement conserve la last card
 
 class Carousel {
 
@@ -190,7 +189,5 @@ const initCarousel = (() => {
   }
 })
 
-// board.forEach(let carousel = new Carousel(board))
-// let carousel = new Carousel(board)
 
 export { initCarousel };
