@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import 'slick-carousel/slick/slick';
 
 // Internal imports, e.g:
 import { initNavbarOnScroll, initNavbarOnSelection } from '../components/navbarAnim';
@@ -34,7 +35,6 @@ import { loadingScreenTyped } from '../components/loadingScreen';
 import { initNavCategories } from '../components/navCategories';
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
-
 // import { initSelect2 } from '../components/init_select2';
 
 
@@ -48,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   // addIngredientsDisliked();
   // addIngredientsWanted();
   loadingScreenTyped();
-  //initNavCategories();
+  initNavCategories();
   // initSelect2();
 });
 
