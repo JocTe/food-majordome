@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @menu = Menu.last
+    @menu = @user.menus.last
     unless @menu.nil?
       authorize @menu
       @menuplans = @menu.menu_plans

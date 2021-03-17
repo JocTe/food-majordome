@@ -67,7 +67,7 @@ class MenusController < ApplicationController
   end
 
   def set_menu
-    @menu = Menu.last
+    @menu = current_user.menus.last
     authorize @menu
   end
 end
