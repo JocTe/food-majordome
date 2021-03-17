@@ -1,12 +1,12 @@
 <div class="slick-menu-categories sticky">
     <div class="slick-categories-shopping">
-        <h5>All</h5>
-        <h5>Fruits & Vegs</h5>
-        <h5>Dairy</h5>
-        <h5>Grocery</h5>
-        <h5>Meat</h5>
-        <h5>Seafood</h5>
-        <h5>Other</h5>    
+        <h5 data-category="All">All</h5>
+        <h5 data-category="Fruits & Vegetables">Fruits & Vegs</h5>
+        <h5 data-category="Dairy">Dairy</h5>
+        <h5 data-category="Grocery">Grocery</h5>
+        <h5 data-category="Meat">Meat</h5>
+        <h5 data-category="Seafood">Seafood</h5>
+        <h5 data-category="Other">Other</h5>    
      </div>
 </div>
 <div class="container" data-controller="shopping">
@@ -14,7 +14,7 @@
     <div class="row">
   
         <% @user_ingredients.each do |task| %>
-            <div class="col-6 mt-3">
+            <div class="col-6 mt-3" data-item-category = "<%= task.ingredient.category %>">
                 <a class="shopping-card" data-shopping-target="card" data-action="click->shopping#toggleState">
                 <%= image_tag(task.ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{task.ingredient.image}") : image_path("groceries.svg"), class: "shopping-card-img") %>
                     <p><%= task.ingredient.name %></p>
