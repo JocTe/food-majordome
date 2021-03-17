@@ -28,7 +28,7 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      current_user.menus.destroy_all
+      
       preferences = session["preferences"]
       current_user.update(number_of_people: preferences["number_of_people"], vegan: preferences["vegan"], vegetarian: preferences["vegetarian"],  gluten_free: preferences["gluten_free"], dairy_free: preferences["dairy_free"], pescetarian: preferences["pescetarian"], no_diet: preferences["no_diet"])
     end

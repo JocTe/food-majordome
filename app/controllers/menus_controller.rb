@@ -52,6 +52,9 @@ class MenusController < ApplicationController
   end
 
   def save_to_session
+    if user_signed_in?
+      current_user.menus.destroy_all
+    end
   session["recipes_data"] = params["recipes_data"]
   render json: session["recipes_data"].to_json
   end
