@@ -1,6 +1,6 @@
 .site-header {
   background-size: cover;
-  height: 20vh;
+  height: 110px;
   width: 100%;
   position: relative;
   border-bottom-left-radius: 27%;
@@ -9,8 +9,8 @@
 
   h1 {
     position: absolute;
-    top: 2em;
-    left: 1em;
+    bottom: 20px;
+    left: 30px;
     font-size: 2em;
     color: $my-white;
   }
