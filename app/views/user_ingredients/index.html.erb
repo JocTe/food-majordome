@@ -9,7 +9,7 @@
         <h5 data-category="Other">Other</h5>    
      </div>
 </div>
-<div class="container" data-controller="shopping">
+<div class="container my-shopping-list" data-controller="shopping">
     <div class="row">
         <% @user_ingredients.each do |task| %>
             <div class="col-6 mt-3 ingredient-shopping" data-item-category = "<%= task.ingredient.category %>">
