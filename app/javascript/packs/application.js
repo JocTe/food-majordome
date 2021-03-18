@@ -34,6 +34,7 @@ import { loadingScreenTyped } from '../components/loadingScreen';
 import { initCarousel } from '../components/carousel';
 import { initNavCategories } from '../components/navCategories';
 import { initMenuShowCarousel } from '../components/menuShowCarousel';
+import { goBack } from './back_link';
 // import { addIngredientsDisliked } from './add_ingredients_disliked';
 // import { addIngredientsWanted } from './add_ingredients_wanted';
 // import { initSelect2 } from '../components/init_select2';
@@ -53,6 +54,7 @@ document.addEventListener('turbolinks:load', () => {
   initNavCategories();
   // initSelect2();
   initCarousel();
+  goBack();
 });
 
 import "controllers";
