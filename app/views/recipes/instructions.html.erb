@@ -36,11 +36,11 @@
             <li>
               <div class="ingredient-card text-center">
                 <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
-                <p class="font-weight-bold mb-0"><%= ingredient.name %></p>
+                <p class="font-weight-bold mb-0"><%= ingredient.name.truncate(14) %></p>
                 <% @recipe.proportions.each do |proportion|%>
                   <% if proportion.ingredient == ingredient %>
                   <% prop = ((proportion.amount) * (current_user.number_of_people.to_f)) %>
-                    <p class="mb-0"><%= prop = prop == prop.to_i ? prop.to_i : prop  %> <%= proportion.unit %></p>
+                    <p class="mb-0"><%=(prop = prop == prop.to_i ? prop.to_i : prop).round(2)%> <%= proportion.unit %></p>
                   <% end %>
                 <% end %>
               </div>
