@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  get "/surprise", to: "pages#surprise"
   get "/preferences", to: "pages#preferences"
   post "/preferences", to: "pages#submit_preferences"
   post "/save_session", to: "menus#save_to_session"
