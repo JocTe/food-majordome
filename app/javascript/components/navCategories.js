@@ -3,8 +3,10 @@ const categoriesStrings = ["Fruits & Vegetables", "Dairy", "Grocery", "Meat", "S
 const initNavCategories = () => {
     const myElement = document.body;
 
-    const categoriesNav = document.querySelector('.slick-categories-shopping')
-    const categoriesTitles = document.querySelectorAll('.slick-categories-shopping > h5')
+    const categoriesNav = document.querySelector('.slick-categories-shopping');
+    const categoriesTitles = document.querySelectorAll('.slick-categories-shopping > h5');
+
+
     if (categoriesNav) {
         slickBehavior(categoriesNav);
         $(categoriesNav).on('swipe', function (slick, currentSlide) {
@@ -12,18 +14,21 @@ const initNavCategories = () => {
                 slick.preventDefault();
             }
             const currentCategory = $('.slick-current')[0].lastChild.lastChild;
+            displayCardsByCategory(currentCategory);
+        });
 
-            const cards = document.querySelectorAll(".ingredient-shopping");
 
-            cards.forEach((card) => {
-                displayCardsByCategory(card, currentCategory);
+        categoriesTitles.forEach((title) => {
+            title.addEventListener('click', (event) => {
+                const slickSlide = title.parentElement.parentElement;
+                $(categoriesNav).slick('slickGoTo', slickSlide.dataset.slickIndex);
+                displayCardsByCategory(title);
             });
         });
 
         const mc = new Hammer(myElement);
         mc.on("swipeleft swiperight", function (ev) {
             let category = "";
-
 
             if (ev.type == "swiperight") {
                 category = $('.slick-current')[0].previousSibling.lastChild.lastChild;
@@ -32,26 +37,26 @@ const initNavCategories = () => {
                 category = $('.slick-current')[0].nextSibling.lastChild.lastChild;
                 $('.slick-next')[0].click();
             }
+            displayCardsByCategory(category);
 
-            const cards = document.querySelectorAll(".ingredient-shopping");
-
-            cards.forEach((card) => {
-                displayCardsByCategory(card, category);
-            });
         });
     }
 }
 
-const displayCardsByCategory = (card, currentCategory) => {
-    if (card.dataset.itemCategory == currentCategory.dataset.category) {
-        card.classList.remove('hide');
-    }
-    else if (currentCategory.dataset.category == "All" & categoriesStrings.includes(card.dataset.itemCategory)) {
-        card.classList.remove('hide');
-    }
-    else {
-        card.classList.add('hide');
-    }
+const displayCardsByCategory = (currentCategory) => {
+    const cards = document.querySelectorAll(".ingredient-shopping");
+    cards.forEach((card) => {
+        if (card.dataset.itemCategory == currentCategory.dataset.category) {
+            card.classList.remove('hide');
+        }
+        else if (currentCategory.dataset.category == "All" & categoriesStrings.includes(card.dataset.itemCategory)) {
+            card.classList.remove('hide');
+        }
+        else {
+            card.classList.add('hide');
+        }
+    });
+
 };
 
 const slickBehavior = (nav) => {

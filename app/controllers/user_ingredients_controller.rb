@@ -5,23 +5,18 @@ class UserIngredientsController < ApplicationController
 
   def index
     save_user_pref(current_user)
-    @menu = current_user.menus.empty? ? create_menu : current_user.menus.last #//? maybe check if it's the same menu than session
-    # //? How should I work it here - There is multipe proportion for one ingredient
-    # //? Also how do I take the unit should I make a request call to the api to convert them?
-    # //? GET https://api.spoonacular.com/recipes/{id}/ingredientWidget.json
-    if current_user.user_ingredients.count == 0 # //* This check if the shopping list is empty - The menu don't change now, because I need to destroy the shopping list when a new menu is made
+    @menu = current_user.menus.empty? ? create_menu : current_user.menus.last 
+    
+    if current_user.user_ingredients.count == 0 
       @menu.recipes.each do |recipe|
         recipe.ingredients.each do |ingredient|
-      # //! ITERATE ON THE PROPORTIONS INSTEAD OF INGREDIENT, THEN ADD INGREDIENTS TOGETHER, THEN COMBINE EVERY INGREDIents
-      # //! add each found ingredients in recipes to an array, combines the same ingredients together BUT how do I get the proportions?
-          create_user_ingredients(ingredient, recipe)
+        create_user_ingredients(ingredient, recipe)
         end
       end
     end
 
-    @user_ingredients = policy_scope(current_user.user_ingredients) # //TODO CHANGE CHECK POLICYSCOPE
-    
-    # @ingredients = UserIngredient.all
+    @user_ingredients = policy_scope(current_user.user_ingredients) 
+
   end
 
 
@@ -33,22 +28,19 @@ class UserIngredientsController < ApplicationController
     user.update(number_of_people: preferences["number_of_people"], vegan: preferences["vegan"], vegetarian: preferences["vegetarian"],  gluten_free: preferences["gluten_free"], dairy_free: preferences["dairy_free"], pescetarian: preferences["pescetarian"], no_diet: preferences["no_diet"])
   end
 
-  # //! SHould only be called once by menu
+
   def create_user_ingredients(ingredient, recipe)
 
     if UserIngredient.find_by(ingredient_id: ingredient.id, user_id: current_user.id).nil?
-      
-      # //! Proportion.where(ingredient_id: 1865, recipe_id:1236).group(:ingredient).sum(:amount) group by ingredients
-      #amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
      
       amount = convert_to_gram(ingredient, recipe)
       user_ingredient = UserIngredient.create(status: false, quantity: amount, user: current_user, ingredient: ingredient)
     else
-      # amount = Proportion.where(ingredient:ingredient, recipe: recipe).sum(:amount)
+     
       amount = convert_to_gram(ingredient, recipe)
       user_ingredient = UserIngredient.find_by(ingredient_id: ingredient.id, user_id: current_user.id)
-     # //! ISSUE : This add an amount each time I go to the shopping list and shopping list is slow.
-      user_ingredient.update(quantity: user_ingredient.quantity.to_f + amount ) #//? maybe change quantity to a float
+     
+      user_ingredient.update(quantity: user_ingredient.quantity.to_f + amount )
     end   
   end
 
@@ -62,12 +54,11 @@ class UserIngredientsController < ApplicationController
       amount << conversion['targetAmount'].to_f
     end
     amount.inject(0){|sum,x| sum + x }
-    # retrun amount in gram
+  
   end
 
   def create_menu
-    current_user.user_ingredients.destroy_all # //! This destroy all the shopping list because you create a menu
-    # current_user.update(number_of_people: session[""])
+    current_user.user_ingredients.destroy_all 
     @menu = Menu.new
     @menu.user = current_user
     session["recipes_data"].each do |recipe|
