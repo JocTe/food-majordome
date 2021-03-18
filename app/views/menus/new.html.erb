@@ -1,7 +1,9 @@
 <%= render "shared/header", text: "Your week menu" %>
+<% jokes = ["Did you hear how they caught the great produce bandit? He stopped to take a leek.","Q: Which dessert is perfect for eating in bed? A: A sheet cake.",
+ "Q: What happened after an explosion at a French cheese factory? A: All that was left was de brie."] %>
 
 <div class="container" data-controller="suggestion" data-suggestion-index="0">
-  <div class="hide show" data-suggestion-target="screen">
+  <div class="hide show justify-content-center" data-suggestion-target="screen">
     <div class="wrapper-margin-bottom-small">
       <div class="swipe-annotation">
         <h4>Swipe <i class="fas fa-arrow-left"></i> or <i class="fas fa-arrow-up"></i> to change your daily menu</h4>
@@ -28,12 +30,17 @@
     </div>
   </div>
 
-  <div class="loading-screen hide" data-suggestion-target="screen">
+  <div class="loading-screen hide mt-5" data-suggestion-target="screen">
     <h3 class="loading-screen-typed" id="loading-title"></h3>
+   <div class="jokes-container">
+     <p id="joke"><%= jokes.sample %></p>
+   </div>
+
     <div class="spinner-grow text-warning" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+
 
   <div class = "btn-background-white" data-action="click->suggestion#next" id="button-save-to-hide">
     <%= render  "shared/large_btn", text: "Valide my menu", identifier: "save-btn-menu", remote: true %>
