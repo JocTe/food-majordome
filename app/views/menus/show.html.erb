@@ -3,7 +3,7 @@
 
 <div class="slick-menu mt-5">
   <% @menuplans.each do |menu|  %>
-    <a href="<%=instructions_recipe_path(menu.recipe_id)%>">
+    <a href="<%=instructions_recipe_path(menu.recipe_id)%>" id="slick-outline-none">
       <div class="slick-menu-container">
         <h5 class="text-center mb-3"> <%= menu.date.strftime("%A %d, %B")%>  </h5>
         <div class="slick-menu-container-card">

@@ -98,3 +98,28 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+.slick-menu-container:focus{
+  outline: none;
+}
+
+.slick-menu-container-card:focus{
+  outline: none;  
+}
+
+.slick-menu-container-card{
+  img:focus{
+    outline: none;
+  }
+  p:focus{
+    outline: none;
+  }
+}
+
+.slick-menu-container-card-informations:focus{
+  outline: none;  
+}
+
+#slick-outline-none{
+  outline: none;
+}
