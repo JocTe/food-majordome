@@ -24,7 +24,7 @@ const initNavCategories = () => {
         mc.on("swipeleft swiperight", function (ev) {
             let category = "";
 
-            console.log(ev.type);
+
             if (ev.type == "swiperight") {
                 category = $('.slick-current')[0].previousSibling.lastChild.lastChild;
                 $('.slick-prev')[0].click();
@@ -33,7 +33,6 @@ const initNavCategories = () => {
                 $('.slick-next')[0].click();
             }
 
-            console.log($('.slick-current')[0]);
             const cards = document.querySelectorAll(".ingredient-shopping");
 
             cards.forEach((card) => {
