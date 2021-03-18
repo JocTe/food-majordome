@@ -12,7 +12,7 @@
             <h3><%=menu.recipe.name.truncate(20)%></h3>
             <p><i class="far fa-clock text-primary"></i> <%= menu.recipe.prep_time.to_i %> minutes </p>
             <p><i class="fas fa-star text-primary"></i>  <%= number = (((menu.recipe.score/100) / 2)*10).round %> /5  </p>
-            <p><i class="fas fa-fire-alt text-warning"></i> <%= menu.recipe.calories.round %> calories </p>
+            <p><i class="fas fa-fire-alt text-primary"></i> <%= menu.recipe.calories.round %> calories </p>
           </div>
         </div>
       </div>
