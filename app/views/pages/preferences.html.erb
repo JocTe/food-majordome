@@ -1,11 +1,11 @@
-<%= render "shared/header", text: "Tell us more about you" %>  
+<%= render "shared/header", text: "Tell us more about you" %>
 
 <div class="container">
- 
+
   <div class="question" data-controller="question" data-question-index="0">
     <div class="questionitem current" data-question-target="questionitem">
       <h3 class="mb-4">How many are you at home?</h3>
-      <!-- <input type="number" id="number_people"> -->  
+      <!-- <input type="number" id="number_people"> -->
       <select class="number_people mb-5 select-border-boootom" name="ice-cream" id="nb_people">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -20,11 +20,11 @@
 
       <div class="btn-background-white">
         <button class="btn btn-secondary btn-block button-radius" data-action="click->question#next">Next</button>
-      </div>      
+      </div>
     </div>
 
     <div class="questionitem" data-question-target="questionitem">
-        <h3>Your diet</h3>
+        <h3 id='your-diet'>Your diet</h3>
         <div class="container">
         <div class="row">
           <div class="col">
@@ -37,44 +37,44 @@
             <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="vegetarian" data-state="false">
               <%= image_tag("diet_icons/vegetarian.svg", :alt => "vegetarian") %>
               <p class="mb-0">Vegetarian</p>
-            </div>      
-          </div>    
+            </div>
+          </div>
         </div>
         <div class="row">
           <div class="col">
             <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="gluten_free" data-state="false">
               <%= image_tag("diet_icons/gluten-free.svg", :alt => "gluten-free") %>
               <p class="mb-0">Gluten-free</p>
-            </div>      
+            </div>
           </div>
           <div class="col">
             <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="dairy_free" data-state="false">
               <%= image_tag("diet_icons/dairy-free.svg", :alt => "dairy-free") %>
               <p class="mb-0">Dairy-free</p>
-            </div> 
-          </div>    
+            </div>
+          </div>
         </div>
-        <div class="row">          
-          <div class="col">
+        <div class="row justify-content-center">
+          <div class="col-7">
             <div class="border-thin card-icon text-center py-2 mb-3 diet" data-diet="no_diet" data-state="false">
               <%= image_tag("diet_icons/no-diet.svg", :alt => "pescetarian") %>
               <p class="mb-0">No particular diet</p>
-            </div>      
-          </div>          
+            </div>
+          </div>
         </div>
 
         <div class="btn-background-white">
           <a class="btn btn-secondary btn-block button-radius" href="<%= new_menu_path %>">Validate</a>
-        </div> 
-        
+        </div>
+
     </div>
-  </div>  
-  
+  </div>
+
   <!-- Activate this code when we have the ingredients data. Complite the JS code then.
   <h3>Any ingredient that you don't like?</h3>
   <input type="text" id="disliked_ingredients">
   <ul id="ingredients_disliked"></ul>
-  
+
   <h3>Are there ingredients that you absolutly want to cook this week?</h3>
   <input type="text" id="wanted_ingredients">
   <ul id="ingredients_wanted"></ul>

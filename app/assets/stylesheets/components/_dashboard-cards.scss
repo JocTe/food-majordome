@@ -1,24 +1,23 @@
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 .border-thin2{
-  border-style: solid;
-  border-width: 1px;
   border-radius: 10px;
-  border-color: rgb(109, 109, 109);
   height: 110px;
   background-color: white;
+  box-shadow:0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.border-thin2:hover {
+  background-color: $primary;
+  color: white;
+
+  img {
+    filter : invert(1)
+  }
+
 }
 
 .card-icon2{
   img {
-  width: 50px;
+  width: 50p x;
   height: 50px;
   object-fit: cover;
   }
