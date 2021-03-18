@@ -32,7 +32,7 @@
       <li>
         <div class="ingredient-card text-center">
           <%= image_tag(ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{ingredient.image}") : image_path("groceries.svg")) %>
-          <p class="font-weight-bold mb-0"><%= ingredient.name.truncate(16) %></p>
+          <p class="font-weight-bold mb-0"><%= ingredient.name.truncate(14) %></p>
           <% ingredient.proportions.each do |proportion|%>
             <% if proportion.ingredient_id == ingredient.id && proportion.recipe_id == @recipe.id %>
             <% prop = (proportion.amount.to_f) * (session["preferences"]["number_of_people"].to_f) %>
