@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
               <a href="<%= menu_path %>" >
-                <div class="border-thin2 card-icon2 text-center py-2 mb-3 ">
+                <div class="border-thin2 card-icon2 text-center py-3 mb-3 ">
                   <%= image_tag("dashboard_icons/calendar.svg", :alt => "calendar") %>
                   <p class="mb-0">My weekly menu</p>
                 </div>
@@ -16,7 +16,7 @@
               <% @menuplans.each do |d| %>
                 <%if d.date == Date.today %>
                   <%= link_to instructions_recipe_path(d.recipe_id) do  %>
-                <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+                <div class="border-thin2 card-icon2 text-center py-3 mb-3 " >
                   <%= image_tag("dashboard_icons/chef.svg", :alt => "cooking") %>
                   <p class="mb-0">Cooking instructions</p>
                 </div>
@@ -29,7 +29,7 @@
         <div class="row">
           <div class="col">
             <a href="<%= shoppinglist_path %>" >
-              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+              <div class="border-thin2 card-icon2 text-center py-3 mb-3 " >
                 <%= image_tag("dashboard_icons/shopping.svg", :alt => "shopping") %>
                 <p class="mb-0">My shopping list</p>
               </div>
@@ -37,7 +37,7 @@
           </div>
           <div class="col">
             <a href="<%= preferences_path %>" >
-              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+              <div class="border-thin2 card-icon2 text-center py-3 mb-3 " >
                 <%= image_tag("dashboard_icons/taste.svg", :alt => "preferences") %>
                 <p class="mb-0">My menu preferences</p>
               </div>
@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-6">
             <a href="https://media.giphy.com/media/LZElUsjl1Bu6c/giphy.gif" >
-              <div class="border-thin2 card-icon2 text-center py-2 mb-3 " >
+              <div class="border-thin2 card-icon2 text-center py-3 mb-3 " >
                 <%= image_tag("dashboard_icons/gift-box.svg", :alt => "surprise") %>
                 <p class="mb-0">Chef's surprise</p>
               </div>
