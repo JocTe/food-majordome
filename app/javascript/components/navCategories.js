@@ -15,7 +15,6 @@ const initNavCategories = () => {
             }
             const currentCategory = $('.slick-current')[0].lastChild.lastChild;
             displayCardsByCategory(currentCategory);
-
         });
 
 
@@ -24,7 +23,6 @@ const initNavCategories = () => {
                 const slickSlide = title.parentElement.parentElement;
                 $(categoriesNav).slick('slickGoTo', slickSlide.dataset.slickIndex);
                 displayCardsByCategory(title);
-
             });
         });
 
