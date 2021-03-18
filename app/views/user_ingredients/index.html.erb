@@ -16,7 +16,7 @@
                 <a class="shopping-card" data-shopping-target="card" data-action="click->shopping#toggleState">
                 <%= image_tag(task.ingredient.image? ?  image_path("https://spoonacular.com/cdn/ingredients_100x100/#{task.ingredient.image}") : image_path("groceries.svg"), class: "shopping-card-img") %>
                     <p><%= task.ingredient.name %></p>
-                    <p><%= (task.quantity.to_f * current_user.number_of_people).round(2) %> grams</p>
+                    <p><%= ((task.quantity.to_f <= 1 ? 1 : task.quantity.to_f )* current_user.number_of_people).round(half: :up) %> grams</p>
                     <input type="checkbox" name="" class="shopping-card-check">
                 </a>
             </div>
