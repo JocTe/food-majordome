@@ -10,7 +10,6 @@ const initNavCategories = () => {
             const cards = document.querySelectorAll(".ingredient-shopping");
 
             cards.forEach((card) => {
-
                 if (card.dataset.itemCategory == currentCategory.dataset.category) {
                     card.classList.remove('hide');
                 }

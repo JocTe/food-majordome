@@ -1,6 +1,31 @@
 <%= render 'shared/header', text:"Your menu this week" %>
 
-<div class="scrolling-wrapper">
+
+<div class="slick-menu mt-5">
+  <% @menuplans.each do |menu|  %>
+    <a href="<%=instructions_recipe_path(menu.recipe_id)%>">
+      <div class="slick-menu-container">
+        <h5 class="text-center mb-3"> <%= menu.date.strftime("%A %d, %B")%>  </h5>
+        <div class="slick-menu-container-card">
+          <img class="slick-menu-container-card-images" src="<%= menu.recipe.image %>" alt="recipe-image">
+          <div class="slick-menu-container-card-informations">
+            <h3><%=menu.recipe.name.truncate(20)%></h3>
+            <p><i class="far fa-clock text-primary"></i> <%= menu.recipe.prep_time.to_i %> minutes </p>
+            <p><i class="fas fa-star text-primary"></i>  <%= number = (((menu.recipe.score/100) / 2)*10).round %> /5  </p>
+            <p><i class="fas fa-fire-alt text-warning"></i> <%= menu.recipe.calories.round %> calories </p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% end %>
+</div>
+
+
+
+
+
+
+<!--<div class="scrolling-wrapper">
   <% @menuplans.each do |menu|  %>
   <a href="<%=instructions_recipe_path(menu.recipe_id)%>">
     <div class="scrolling-card">
@@ -17,6 +42,6 @@
     </div>
   </a>
   <% end %>
-</div>
+</div>-->
 
 <%= render 'shared/navbar' %>

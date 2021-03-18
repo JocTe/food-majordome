@@ -1,24 +1,39 @@
-.scrolling-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  scroll-snap-type: x mandatory;
+.slick-menu {
+  display: flex;
   border-radius: 5px;
+  align-items: center;
+  &-container {
+    
+    width: 100%;
+    height: 100%;
 
+    &-card {
+      height: 400px;
+      margin: 0 10px;
+      border-radius: 20px;
+      box-shadow:0 5px 20px rgba(0, 0, 0, 0.05);
+      background-color: rgba(255, 255, 255, 0.3);
+      
+      &-images {
+       
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      
+        width: 100%;
+      
+        object-fit: contain;
+        pointer-events: none;
+      }
 
-  h2 {
-    margin: 0px;
-    margin-top: 5px;
-    margin-bottom: 8px;
-    text-align: center;
-    font-size: 24px;
-
+      &-informations {
+        margin-top: 10px;
+        padding-left: 15px;
+        
+      }
+    }
   }
 
-  h3 {
-    margin-top: 16px;
-    font-size: 32px;
-  }
+  
 
   p {
     margin-bottom: 6px;
@@ -29,43 +44,6 @@
   a {
     text-decoration: none;
     color: inherit;
-  }
-
-  .scrolling-card {
-    display: inline-block;
-    width: 100vw;
-    height: 65vh;
-    margin: 8px;
-    scroll-snap-align: start;
-  }
-
-  .scrolling-container {
-    position: relative;
-    margin: auto;
-    border-radius: 20px;
-    box-shadow:0 5px 20px rgba(0, 0, 0, 0.05);
-    background-color: rgba(255, 255, 255, 0.3);
-    width: 90%;
-    height: 90%;
-  }
-
-
-  .scrolling-images {
-    overflow: hidden;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 60%;
-    object-fit: fill;
-    pointer-events: none;
-  }
-
-  .scrolling-informations {
-    position: absolute;
-    top: 60%;
-    left: 10%;
   }
 }
 
