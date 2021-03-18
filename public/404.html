@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+    background-color: #F7F5F3;
+    color: #474847;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
@@ -35,6 +35,29 @@
     font-size: 100%;
     color: #730E15;
     line-height: 1.5em;
+    margin: 0;
+  }
+
+  .rails-default-error-page p {
+    margin: 30px 15px;
+  }
+
+  .rails-default-error-page header {
+    background-size: cover;
+    height: 110px;
+    width: 100%;
+    position: relative;
+    border-bottom-left-radius: 27%;
+    border-bottom-right-radius: 27%;
+    background-color: #9ED870;    
+  }
+
+  .rails-default-error-page header > h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 2em;
+    color: #F7F5F3;
   }
 
   .rails-default-error-page div.dialog > p {
@@ -51,17 +74,47 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .rails-default-error-page a {   
+    color: #F7F5F3;
+    background-color: #F66565;
+    padding: 10px 100px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .rails-default-error-page a:focus {    
+    background-color: #f44141;
+  }
+
+  .rails-default-error-page img {   
+    width: 100vw;
+    height: 50vh;
+    object-fit: cover;
+  }
+
+  .btn-background-white{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    padding : 20px 10px;
+    background-color: white;
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.1);
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+  <header>
+    <h1>Oops...</h1>
+  </header>
+  
+  <p>The page you are trying to reach doesn't exist.</p>
+  <img src="/images/not_found.jpg" alt="error 404">
+  <div class="btn-background-white">
+    <a href="/">Go back home</a>  
   </div>
 </body>
 </html>
